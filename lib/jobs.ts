@@ -1,16 +1,16 @@
 import { ZohoJob, JobsApiResponse } from "@/types/jobs";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-const API_URL = `${BASE_URL}/api/jobs`;
+// Call the upstream API directly — avoids any dependency on the deployment URL
+const UPSTREAM_URL = "https://eorkh6dh9m50sfq.m.pipedream.net";
 
 /**
  * Fetch all published jobs from the Zoho Recruit API.
- * Uses `cache: "no-store"` to always get fresh data.
+ * Revalidates every 5 minutes (300s) so Vercel caches the result.
  */
 export async function fetchJobs(): Promise<ZohoJob[]> {
     try {
-        const res = await fetch(API_URL, {
-            cache: "no-store",
+        const res = await fetch(UPSTREAM_URL, {
+            next: { revalidate: 300 },
         });
 
         if (!res.ok) {
@@ -43,8 +43,8 @@ export async function fetchJobs(): Promise<ZohoJob[]> {
  */
 export async function getJobById(id: string): Promise<ZohoJob | null> {
     try {
-        const res = await fetch(API_URL, {
-            cache: "no-store",
+        const res = await fetch(UPSTREAM_URL, {
+            next: { revalidate: 300 },
         });
 
         if (!res.ok) return null;
