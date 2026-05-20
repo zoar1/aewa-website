@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-background: #F7F7F6;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #111111;
+  --color-text-secondary: #555555;
+  --color-accent: #0E1A2B;
+  --color-border: #E5E5E5;
+  --color-btn-primary: #111111;
+  --color-btn-primary-hover: #222222;
+
+  /* Brand palette — used by ServicesCarousel and shared components */
+  --color-brand-blue: #003366;
+  --color-brand-yellow: #F5B800;
+
+  /* AEWA exact brand colours */
+  --color-aewa-blue: #00326a;
+  --color-aewa-yellow: #ffcb00;
+  --color-brand-muted: #555555;
+  --color-brand-ink: #111111;
+  --color-brand-border: #E5E5E5;
+  --color-brand-alt: #F7F7F6;
+
+  /* Border Radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-card: 24px;
+  --radius-btn: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+
+  /* Font */
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #F7F7F6;
+    color: #111111;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  h1 {
+    font-size: clamp(40px, 5vw, 56px);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    max-width: 720px;
+  }
+}
+
+@layer utilities {
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background-color: #003366;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid #003366;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background-color: #004080;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background-color: transparent;
+    color: #111111;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid #111111;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .btn-secondary:hover {
+    background-color: #111111;
+    color: #FFFFFF;
+  }
+}
+
+/* ── Marquee animation (must be top-level, not inside @layer) ── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}

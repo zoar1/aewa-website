@@ -1,0 +1,39 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+interface ServiceCardProps {
+    title: string;
+    description: string;
+    href: string;
+    icon: string;
+    index: number;
+}
+
+export default function ServiceCard({ title, description, href, icon, index }: ServiceCardProps) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.08 }}
+            whileHover={{ scale: 1.015, transition: { duration: 0.3 } }}
+            className="group bg-white rounded-[24px] border border-[#E5E5E5] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col gap-5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-shadow duration-300"
+        >
+            <div className="w-12 h-12 rounded-[12px] bg-[#F7F7F6] border border-[#E5E5E5] flex items-center justify-center text-xl flex-shrink-0">
+                {icon}
+            </div>
+            <div className="flex flex-col gap-2 flex-1">
+                <h3 className="text-[#111111]">{title}</h3>
+                <p className="text-[#555555] text-sm leading-relaxed">{description}</p>
+            </div>
+            <Link
+                href={href}
+                className="flex items-center gap-2 text-sm font-semibold text-[#111111] group-hover:gap-3 transition-all duration-200"
+            >
+                Learn more <span className="text-base">→</span>
+            </Link>
+        </motion.div>
+    );
+}
