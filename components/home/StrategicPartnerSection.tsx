@@ -5,14 +5,14 @@ import { about } from "@/content/pages";
 
 export default function StrategicPartnerSection() {
   return (
-    <section className="bg-white py-12 md:py-16 lg:py-24">
+    <section className="bg-[#F7F7F6] py-12 md:py-16 lg:py-24">
       <div className="mx-auto w-full max-w-[1280px] px-5 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-[#F7F7F6] rounded-[24px] border border-[#E5E5E5] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"
+          className="bg-white rounded-[24px] border border-[#E5E5E5] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"
         >
           {/* Logo */}
           <div className="shrink-0 flex items-center justify-center w-32 h-16">
