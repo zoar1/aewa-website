@@ -45,19 +45,20 @@ export default function HeroSection() {
                     objectFit: "cover",
                     objectPosition: "center",
                     zIndex: 0,
+                    filter: "grayscale(1) saturate(0)",
                 }}
             >
                 <source src="/images/video/rotating-abstract.mp4" type="video/mp4" />
                 <source src="/images/video/rotating-abstract.webm" type="video/webm" />
             </video>
 
-            {/* Dark navy overlay at 50% opacity */}
+            {/* #003366 blue overlay — semi-transparent so the grayscale video shows through */}
             <div
                 aria-hidden="true"
                 style={{
                     position: "absolute",
                     inset: 0,
-                    backgroundColor: "rgba(6, 26, 58, 0.6)",
+                    backgroundColor: "rgba(0, 51, 102, 0.55)",
                     zIndex: 1,
                 }}
             />

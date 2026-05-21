@@ -6,6 +6,7 @@ import SuccessStoriesSection from "@/components/home/SuccessStoriesSection";
 import JobsTeaserSection from "@/components/home/JobsTeaserSection";
 import TestimonialCarousel from "@/components/home/TestimonialCarousel";
 import CTASection from "@/components/home/CTASection";
+import StrategicPartnerSection from "@/components/home/StrategicPartnerSection";
 import Footer from "@/components/footer/Footer";
 import ServicesCarousel from "@/components/home/ServicesCarousel";
 import { servicesCarousel } from "@/content/home";
@@ -43,6 +44,9 @@ export default function HomePage() {
             <div style={{ backgroundColor: "#F7F7F6" }}>
               <CTASection />
             </div>
+
+            {/* Strategic partner — sits directly above the footer */}
+            <StrategicPartnerSection />
           </div>
         </div>
       </main>
