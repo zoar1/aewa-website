@@ -94,7 +94,7 @@ function LogoCard({ name, file }: { name: string; file: string }) {
         <img
           src={src}
           alt={name}
-          className="max-h-12 max-w-[120px] w-auto object-contain opacity-70 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
+          className="max-h-12 max-w-[120px] w-auto object-contain opacity-100 group-hover:opacity-70 grayscale-0 group-hover:grayscale transition-all duration-300"
           onError={() => setImgError(true)}
         />
       ) : (

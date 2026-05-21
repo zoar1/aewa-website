@@ -109,7 +109,11 @@ export default function HeroSection() {
                     variants={fadeUp}
                     className="flex flex-wrap items-center gap-4"
                 >
-                    <Link href={hero.primaryCta.href} className="btn-primary">
+                    <Link
+                        href={hero.primaryCta.href}
+                        className="btn-primary"
+                        style={{ backgroundColor: "#ffffff", color: "#003366", borderColor: "#ffffff" }}
+                    >
                         {hero.primaryCta.label}
                     </Link>
                     <Link
