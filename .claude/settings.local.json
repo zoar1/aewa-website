@@ -11,7 +11,15 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001)",
       "Bash(pkill -f \"next dev\")",
       "Bash(nohup npm run dev)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(curl -s \"https://eorkh6dh9m50sfq.m.pipedream.net\")",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/api/jobs)",
+      "Bash(curl -s \"http://localhost:3000/api/jobs\")",
+      "WebFetch(domain:jobs.aewanl.com)",
+      "Bash(npm install *)"
     ]
   }
 }

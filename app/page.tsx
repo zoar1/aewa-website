@@ -4,6 +4,7 @@ import LogoStrip from "@/components/home/LogoStrip";
 import WhyAEWASection from "@/components/home/WhyAEWASection";
 import SuccessStoriesSection from "@/components/home/SuccessStoriesSection";
 import JobsTeaserSection from "@/components/home/JobsTeaserSection";
+import TestimonialCarousel from "@/components/home/TestimonialCarousel";
 import CTASection from "@/components/home/CTASection";
 import Footer from "@/components/footer/Footer";
 import ServicesCarousel from "@/components/home/ServicesCarousel";
@@ -14,9 +15,8 @@ export default function HomePage() {
     <>
       <Navbar />
       <main>
-        {/* Shared parent — HeroSection sticks within this entire scroll range */}
         <div style={{ position: "relative" }}>
-          {/* HeroSection is sticky — video background scrolls with it */}
+          {/* HeroSection is sticky — scrolls with the page */}
           <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
             <HeroSection />
           </div>
@@ -27,10 +27,20 @@ export default function HomePage() {
               <LogoStrip />
               <ServicesCarousel items={servicesCarousel} />
             </div>
+
+            {/* Stats */}
             <WhyAEWASection />
             <div style={{ backgroundColor: "#F7F7F6" }}>
               <SuccessStoriesSection />
-              <JobsTeaserSection />
+            </div>
+
+            {/* Career opportunities card */}
+            <JobsTeaserSection />
+
+            {/* Testimonial carousel — below the jobs card */}
+            <TestimonialCarousel />
+
+            <div style={{ backgroundColor: "#F7F7F6" }}>
               <CTASection />
             </div>
           </div>

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/layout/Section";
-import { stats, testimonial } from "@/content/home";
+import { stats } from "@/content/home";
 
 /* ─── Parse a stat value like "1,250+" → { num: 1250, suffix: "+" } ──────── */
 function parseStat(value: string): { num: number; suffix: string } {
@@ -13,7 +13,6 @@ function parseStat(value: string): { num: number; suffix: string } {
     return { num: parseFloat(match[1]), suffix: match[2] };
 }
 
-/* Format a number back with commas if the original had them */
 function fmt(n: number, hadComma: boolean): string {
     if (!hadComma) return String(Math.round(n));
     return Math.round(n).toLocaleString("en-US");
@@ -30,7 +29,6 @@ function useCountUp(target: number, duration = 1800, active = false) {
         function tick(now: number) {
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
-            // ease-out cubic
             const eased = 1 - Math.pow(1 - progress, 3);
             setCount(eased * target);
             if (progress < 1) rafRef.current = requestAnimationFrame(tick);
@@ -80,12 +78,11 @@ function StatCard({ value, label, delay }: { value: string; label: string; delay
     );
 }
 
-/* ─── Section ────────────────────────────────────────────────────────────── */
+/* ─── Section — stats only, testimonial moved to TestimonialCarousel ─────── */
 export default function SuccessStoriesSection() {
     return (
         <Section className="bg-white">
-            {/* Stats row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 pb-16 md:pb-20 border-b border-black/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
                 {stats.map((stat, i) => (
                     <StatCard
                         key={stat.label}
@@ -95,34 +92,6 @@ export default function SuccessStoriesSection() {
                     />
                 ))}
             </div>
-
-            {/* Testimonial */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-                className="pt-16 md:pt-20"
-            >
-                <div className="max-w-[760px]">
-                    <p className="text-sm font-semibold text-[#555555] uppercase tracking-widest mb-8">
-                        Client Testimonial
-                    </p>
-                    <blockquote className="text-[#111111] text-2xl md:text-3xl font-semibold leading-[1.4] mb-10">
-                        &ldquo;{testimonial.quote}&rdquo;
-                    </blockquote>
-
-                    <div className="flex items-center gap-4">
-                        <div className="w-11 h-11 rounded-full bg-[#003366]/10 border border-[#003366]/20 flex items-center justify-center text-[#003366] font-bold text-sm">
-                            {testimonial.author.charAt(0)}
-                        </div>
-                        <div>
-                            <p className="text-[#111111] font-semibold text-sm">{testimonial.author}</p>
-                            <p className="text-[#555555] text-sm">{testimonial.role}</p>
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
         </Section>
     );
 }
