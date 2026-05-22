@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/layout/Section";
 import { contact } from "@/content/pages";
+import ServiceIcon from "@/components/shared/ServiceIcon";
 
 export default function ContactForm() {
     const [submitted, setSubmitted] = useState(false);
@@ -41,7 +42,9 @@ export default function ContactForm() {
                                 transition={{ duration: 0.5, ease: "easeOut" }}
                                 className="flex items-start gap-4 p-5 bg-[#F7F7F6] rounded-[20px] border border-[#E5E5E5]"
                             >
-                                <span className="text-2xl mt-0.5 flex-shrink-0">{item.icon}</span>
+                                <span className="mt-0.5 flex-shrink-0 w-9 h-9 rounded-[10px] bg-white border border-[#E5E5E5] flex items-center justify-center">
+                                    <ServiceIcon name={item.icon} size={18} className="text-[#003366]" />
+                                </span>
                                 <div>
                                     <p className="text-xs font-semibold text-[#555555] uppercase tracking-wider mb-1">{item.label}</p>
                                     {item.href ? (
@@ -70,7 +73,9 @@ export default function ContactForm() {
                 >
                     {submitted ? (
                         <div className="h-full flex flex-col items-center justify-center text-center gap-4 bg-[#F7F7F6] rounded-[24px] border border-[#E5E5E5] p-12">
-                            <span className="text-5xl">✅</span>
+                            <span className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+                                <ServiceIcon name="check-circle" size={32} className="text-emerald-600" />
+                            </span>
                             <h3 className="text-[#111111] text-2xl font-bold">Message Sent!</h3>
                             <p className="text-[#555555] leading-relaxed max-w-sm">
                                 Thank you for reaching out. We&rsquo;ll get back to you within one business day.
@@ -133,11 +138,12 @@ export default function ContactForm() {
                                     className="w-full px-4 py-3 bg-white border border-[#E5E5E5] rounded-[12px] text-[#111111] text-sm focus:outline-none focus:border-[#111111] transition-colors duration-200 appearance-none cursor-pointer"
                                 >
                                     <option value="">Select a service…</option>
-                                    <option>Recruitment & Outsourcing</option>
-                                    <option>Global HR & Payroll Services</option>
-                                    <option>Security Services</option>
-                                    <option>Training</option>
-                                    <option>Local Representation Services</option>
+                                    <option>Technical Recruitment & Manpower Solutions</option>
+                                    <option>Skilled Trades Deployment</option>
+                                    <option>Expatriate Work Permit & Administrative Support</option>
+                                    <option>QA/QC & Technical Inspection Services</option>
+                                    <option>Offshore Crew & Manning Services</option>
+                                    <option>Payroll & Compliance Management</option>
                                     <option>Other</option>
                                 </select>
                             </div>
