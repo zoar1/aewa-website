@@ -19,96 +19,103 @@ export const clients = [
 
 export const services = [
     {
-        title: "Recruitment & Outsourcing",
+        title: "Technical Recruitment & Manpower Solutions",
         description:
-            "We search, interview, and deploy foreign and indigenous expert workforce for global industrial players and SMEs at all phases of your projects.",
-        href: "/services/recruitment-and-outsourcing",
+            "We deliver high-performance workforce solutions across Oil & Gas, EPCM, power, infrastructure, and industrial sectors — deploying skilled, semi-skilled, and unskilled personnel both local and expatriate.",
+        href: "/services/technical-recruitment",
         icon: "👥",
     },
     {
-        title: "Global HR & Payroll Services",
+        title: "Skilled Trades Deployment",
         description:
-            "Our expertise covers the entire spectrum of HR disciplines, providing highly trained, qualified, and multi-lingual profiles on AEWA payroll.",
-        href: "/services/global-hr-services",
-        icon: "🌍",
+            "Our pool of certified artisans and technicians — welders, electricians, riggers, scaffolders, and equipment operators — are project-ready and safety compliant for fabrication, construction, shutdowns, and offshore operations.",
+        href: "/services/skilled-trades",
+        icon: "🔧",
     },
     {
-        title: "Security Services",
+        title: "Expatriate Work Permit & Administrative Support",
         description:
-            "Comprehensive security consultancy and staffing solutions tailored to the unique operational requirements of the energy and industrial sectors.",
-        href: "/services/security",
-        icon: "🛡️",
+            "We handle the full lifecycle of expatriate engagement in Nigeria: work permits and visas, quotas, payroll, tax compliance, medicals, and repatriation — end-to-end.",
+        href: "/services/expatriate-support",
+        icon: "📋",
     },
     {
-        title: "Training",
+        title: "QA/QC & Technical Inspection Services",
         description:
-            "Industry-specific professional development programmes built to upskill your workforce and meet the demands of a rapidly evolving energy landscape.",
-        href: "/services/training",
-        icon: "🎓",
+            "We provide certified QA/QC professionals to safeguard quality and compliance across engineering and construction projects, including NDT, welding inspections, FAT/SAT, and third-party audits.",
+        href: "/services/qa-qc-inspection",
+        icon: "🔍",
     },
     {
-        title: "Local Representation",
+        title: "Offshore Crew & Manning Services",
         description:
-            "As exclusive Nigerian agents for leading international manufacturers, we support commercial activities and provide in-country representation.",
-        href: "/services/local-representation",
-        icon: "🤝",
+            "From offshore crew supply and rotation management to strategic workforce planning, we combine precision and discretion to help you build and manage high-performing teams.",
+        href: "/services/offshore-manning",
+        icon: "⚓",
+    },
+    {
+        title: "Payroll & Compliance Management",
+        description:
+            "We handle payroll processing, statutory deductions, and regulatory reporting with precision and confidentiality — keeping your workforce paid and your organisation fully compliant.",
+        href: "/services/payroll-compliance",
+        icon: "💼",
     },
 ];
 
 export const servicesCarousel = [
     {
-        id: "recruitment-outsourcing",
+        id: "technical-recruitment",
         tag: "Service",
-        title: "Recruitment & Outsourcing",
+        title: "Technical Recruitment & Manpower Solutions",
         description:
-            "We search, interview, and deploy foreign and indigenous expert workforce for global industrial players and SMEs at all phases of your projects.",
+            "We deliver high-performance workforce solutions across Oil & Gas, EPCM, power, infrastructure, and industrial sectors — deploying skilled, semi-skilled, and unskilled personnel both local and expatriate.",
         bullets: [
-            "Search, interview & deploy talent",
-            "Foreign & indigenous workforce",
-            "Support across project phases",
-            "For global players and SMEs",
+            "Oil & Gas, EPCM & power sectors",
+            "Local and expatriate deployment",
+            "Feasibility to commissioning support",
+            "Aligned to your project goals",
         ],
         imageSrc: "/images/services/recruitment.jpg",
     },
     {
-        id: "global-hr-payroll",
+        id: "skilled-trades",
         tag: "Service",
-        title: "Global HR & Payroll Services",
+        title: "Skilled Trades Deployment",
         description:
-            "Our expertise covers the entire spectrum of HR disciplines, providing highly trained, qualified, and multi-lingual profiles on AEWA payroll.",
+            "Our pool of certified artisans and technicians are project-ready and safety compliant for fabrication, construction, shutdowns, maintenance, and offshore/onshore operations.",
         bullets: [
-            "Full-spectrum HR support",
-            "Highly trained & qualified profiles",
-            "Multi-lingual talent pool",
-            "Managed on AEWA payroll",
+            "Welders, riggers & electricians",
+            "Scaffolders & equipment operators",
+            "Offshore/onshore operations ready",
+            "Safety compliant & project-ready",
         ],
         imageSrc: "/images/services/global-hr.jpg",
     },
     {
-        id: "training",
+        id: "qa-qc-inspection",
         tag: "Service",
-        title: "Training",
+        title: "QA/QC & Technical Inspection Services",
         description:
-            "Industry-specific professional development programmes built to upskill your workforce and meet the demands of a rapidly evolving energy landscape.",
+            "We provide certified QA/QC professionals to safeguard quality and compliance across engineering and construction projects at every stage.",
         bullets: [
-            "Industry-specific programmes",
-            "Upskill technical & non-technical teams",
-            "Professional development tracks",
-            "Aligned to energy sector demands",
+            "NDT & welding inspections",
+            "FAT/SAT & third-party audits",
+            "In-service inspections",
+            "Global compliance standards",
         ],
         imageSrc: "/images/services/training.jpg",
     },
     {
-        id: "local-representation",
+        id: "offshore-manning",
         tag: "Service",
-        title: "Local Representation",
+        title: "Offshore Crew & Manning Services",
         description:
-            "As exclusive Nigerian agents for leading international manufacturers, we support commercial activities and provide in-country representation.",
+            "From offshore crew supply and rotation management to strategic workforce planning, we combine precision and discretion to build high-performing teams.",
         bullets: [
-            "Exclusive Nigerian agency support",
-            "In-country representation",
-            "Commercial activity enablement",
-            "Partner support for manufacturers",
+            "Crew supply & rotation management",
+            "Operational & strategic workforce",
+            "High-performing team building",
+            "Precision & discretion guaranteed",
         ],
         imageSrc: "/images/services/local-representation.jpg",
     },

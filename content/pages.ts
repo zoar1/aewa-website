@@ -59,100 +59,127 @@ export const serviceDetails: Record<
         relatedSlugs: string[];
     }
 > = {
-    "recruitment-and-outsourcing": {
-        slug: "recruitment-and-outsourcing",
-        title: "Recruitment & Outsourcing",
+    "technical-recruitment": {
+        slug: "technical-recruitment",
+        title: "Technical Recruitment & Manpower Solutions",
         icon: "👥",
         description:
-            "We search, interview, and provide foreign and indigenous expert workforce for global industrial players and SMEs, at all phases of your projects.",
+            "We deliver high-performance workforce solutions across Oil & Gas, EPCM, power, infrastructure, and industrial sectors. From feasibility to commissioning, we deploy skilled, semi-skilled, and unskilled personnel both local and expatriate — ensuring the right talent is on ground, on time, and aligned with your project goals.",
         imageSrc: "/images/services/hero/recruitment.jpg",
         sections: [
             {
-                title: "Recruitment",
-                body: "Solidly focused on delivering excellent human resources, we have honed, calibrated, and refined our recruitment processes to find and retain the best talents possible. We source across borders to deliver the precise skills your project demands.",
+                title: "End-to-End Talent Deployment",
+                body: "From feasibility through to commissioning, we identify, screen, and deploy the precise talent your project demands. Our network spans local and international markets, giving you access to qualified candidates across all disciplines and skill levels.",
             },
             {
-                title: "Outsourcing",
-                body: "Our expertise encapsulates the entire spectrum of professions and disciplines, allowing us to provide an exceptionally diverse portfolio of highly trained, qualified, and multi-lingual profiles on AEWA payroll. The speed and flexibility of our services are central to the value we provide.",
+                title: "Local & Expatriate Workforce",
+                body: "We source and place both indigenous Nigerian talent and expatriate professionals, managing all aspects of mobilisation. Our processes are built for speed and compliance, so your project is never delayed by workforce gaps.",
             },
         ],
-        relatedSlugs: ["global-hr-services", "training"],
+        relatedSlugs: ["skilled-trades", "expatriate-support"],
     },
-    "global-hr-services": {
-        slug: "global-hr-services",
-        title: "Global HR & Payroll Services",
-        icon: "🌍",
+    "skilled-trades": {
+        slug: "skilled-trades",
+        title: "Skilled Trades Deployment",
+        icon: "🔧",
         description:
-            "From payroll to immigration and logistics services, we offer fully compliant global HR services in every country we operate in.",
+            "Our pool of certified artisans and technicians — including welders, electricians, riggers, scaffolders, and equipment operators — are project-ready and safety compliant. We support fabrication, construction, shutdowns, maintenance, and offshore/onshore operations with reliable, experienced hands.",
+        imageSrc: "/images/services/hero/recruitment.jpg",
+        sections: [
+            {
+                title: "Certified Artisans & Technicians",
+                body: "Every tradesperson we deploy is verified, certified, and inducted to the safety standards your project requires. Our pool covers welders, electricians, riggers, scaffolders, pipefitters, and equipment operators across all competency levels.",
+            },
+            {
+                title: "Shutdowns, Maintenance & Offshore Operations",
+                body: "We support planned and unplanned shutdowns, turnarounds, and ongoing maintenance programmes. Whether onshore or offshore, our skilled trades teams are mobilised quickly and are ready to work from day one.",
+            },
+        ],
+        relatedSlugs: ["technical-recruitment", "qa-qc-inspection"],
+    },
+    "expatriate-support": {
+        slug: "expatriate-support",
+        title: "Expatriate Work Permit & Administrative Support",
+        icon: "📋",
+        description:
+            "We handle the full lifecycle of expatriate engagement in Nigeria — from work permits and visas to quotas, payroll, tax compliance, medicals, and repatriation. Our end-to-end support ensures seamless onboarding and strict adherence to regulatory requirements.",
         imageSrc: "/images/services/hero/global-hr.jpg",
         sections: [
             {
-                title: "Payroll & Tax Management",
-                body: "Our team of finance and accounting experts removes the complexity of payroll management for our clients, ensuring a seamless process and preventing any legal complications related to local tax obligations.",
+                title: "Work Permits, Visas & Quotas",
+                body: "We manage all Nigerian immigration requirements for expatriate staff, including Temporary Work Permits (TWP), Combined Expatriate Residence Permits and Aliens Cards (CERPAC), and Expatriate Quota applications — handling documentation, renewals, and compliance end-to-end.",
             },
             {
-                title: "Immigration",
-                body: "We specialise in providing solutions that address all essential requirements for successful international assignments. With our in-country knowledge, we handle visas, resident and work permits (TWP), documentation, and insurance — ensuring employees relocate with minimal stress.",
+                title: "Payroll, Tax & Medicals",
+                body: "Our team handles expatriate payroll processing, Nigeria tax compliance, and mandatory pre-assignment medicals. We ensure every aspect of the engagement is fully compliant with local regulations so your expatriates can focus on the work.",
             },
             {
-                title: "Relocation Services",
-                body: "From flight reservation to accommodation and local integration, we provide integrated logistics solutions to ensure seamless personnel relocation across borders.",
+                title: "Repatriation & Offboarding",
+                body: "When assignments end, we manage the complete repatriation process — permit cancellations, final settlements, and all administrative requirements — ensuring a smooth and compliant conclusion to every expatriate engagement.",
             },
         ],
-        relatedSlugs: ["recruitment-and-outsourcing", "local-representation"],
+        relatedSlugs: ["technical-recruitment", "payroll-compliance"],
     },
-    security: {
-        slug: "security",
-        title: "Security Services",
-        icon: "🛡️",
+    "qa-qc-inspection": {
+        slug: "qa-qc-inspection",
+        title: "QA/QC & Technical Inspection Services",
+        icon: "🔍",
         description:
-            "We secure agreements and contracts with experienced security companies and consultants for the protection of human assets and properties.",
+            "We provide certified QA/QC professionals to safeguard quality and compliance across engineering and construction projects. Our services include NDT, welding inspections, FAT/SAT, third-party audits, and in-service inspections — ensuring your assets meet global standards at every stage.",
         imageSrc: "/images/services/hero/security.jpg",
         sections: [
             {
-                title: "Security Consulting & Staffing",
-                body: "We deploy police escorts, conduct consulting engagements, and carry out audits and site surveys tailored to the energy and industrial environments. We combine accessible intelligence from all available sources, including our own information network, to provide actionable advice.",
+                title: "Non-Destructive Testing & Welding Inspections",
+                body: "Our NDT specialists and certified welding inspectors provide on-site and remote inspection services across pipelines, pressure vessels, structural steel, and rotating equipment. All work is performed to internationally recognised codes and standards.",
+            },
+            {
+                title: "FAT/SAT & Third-Party Audits",
+                body: "We conduct Factory Acceptance Tests, Site Acceptance Tests, and independent third-party quality audits to verify that equipment and systems meet your technical and regulatory requirements before and after installation.",
+            },
+            {
+                title: "In-Service Inspections",
+                body: "For operating assets, we provide ongoing in-service inspection programmes to monitor asset integrity, identify potential failure modes early, and ensure continued compliance with regulatory and client standards throughout the asset lifecycle.",
             },
         ],
-        relatedSlugs: ["training", "local-representation"],
+        relatedSlugs: ["skilled-trades", "offshore-manning"],
     },
-    training: {
-        slug: "training",
-        title: "Training",
-        icon: "🎓",
+    "offshore-manning": {
+        slug: "offshore-manning",
+        title: "Offshore Crew & Manning Services",
+        icon: "⚓",
         description:
-            "We offer training solutions to clients investing in the development of their personnel and/or attempting to fill competency gaps within their organisations.",
+            "From offshore crew supply and rotation management, we support both operational and strategic workforce needs. We combine precision and discretion to help you build and manage high-performing teams.",
         imageSrc: "/images/services/hero/training.jpg",
         sections: [
             {
-                title: "Health, Safety & Environment (HSE)",
-                body: "Our specialised subsidiary is certified to carry out HSE training according to a complete catalogue — IOSH, NEBOSH, JOYCE, and JOIFF. These programmes are designed for the energy and industrial sectors where safety is non-negotiable.",
+                title: "Crew Supply & Rotation Management",
+                body: "We provide fully vetted offshore crew for drilling, production, construction, and support vessels. Our rotation scheduling ensures continuous coverage and minimises gaps in manning — keeping your offshore operations running without interruption.",
             },
             {
-                title: "Emergency Response",
-                body: "Our specialised team provides global services on industrial and petrochemical sites to equip personnel with the knowledge and skills required to respond appropriately in emergency situations.",
+                title: "Strategic Offshore Workforce Planning",
+                body: "Beyond day-to-day manning, we work with clients to design workforce plans that align with field development schedules, contract requirements, and long-term operational needs. We bring the strategic thinking and local network to build teams that perform.",
             },
         ],
-        relatedSlugs: ["security", "recruitment-and-outsourcing"],
+        relatedSlugs: ["skilled-trades", "qa-qc-inspection"],
     },
-    "local-representation": {
-        slug: "local-representation",
-        title: "Local Representation Services",
-        icon: "🤝",
+    "payroll-compliance": {
+        slug: "payroll-compliance",
+        title: "Payroll & Compliance Management",
+        icon: "💼",
         description:
-            "We act as a local partner for companies wishing to start investing in Nigeria, supporting them at every stage of market entry.",
+            "We handle payroll processing, statutory deductions, and regulatory reporting with precision and confidentiality. Our service ensures your workforce is paid accurately and your organisation remains fully compliant with all legal requirements.",
         imageSrc: "/images/services/hero/local-representation.jpg",
         sections: [
             {
-                title: "Market Entry & Representation",
-                body: "We support international companies with a liaison office, market and supplier research, business registration, and response to calls for tenders. We provide strategic thinking and local intelligence, giving clients an unmatched edge in the Nigerian market.",
+                title: "Accurate Payroll Processing",
+                body: "We manage end-to-end payroll for both permanent and contract staff — handling salary calculations, allowances, deductions, and disbursements on schedule. Our systems are built for accuracy and confidentiality at every step.",
             },
             {
-                title: "Exclusive Agency — Davi Promau",
-                body: "As the exclusive Nigerian agent for Davi Promau — the world's largest manufacturer of plate and angle rolls — AEWA supports their commercial activities across the country, bridging international manufactures with the local market.",
+                title: "Statutory Deductions & Regulatory Reporting",
+                body: "From PAYE and pension contributions to ITF and NSITF, we ensure all statutory obligations are met correctly and on time. We handle all required reporting to regulatory bodies, keeping your organisation fully compliant and free from penalties.",
             },
         ],
-        relatedSlugs: ["global-hr-services", "security"],
+        relatedSlugs: ["technical-recruitment", "expatriate-support"],
     },
 };
 
