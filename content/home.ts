@@ -119,6 +119,34 @@ export const servicesCarousel = [
         ],
         imageSrc: "/images/services/local-representation.jpg",
     },
+    {
+        id: "expatriate-support",
+        tag: "Service",
+        title: "Expatriate Work Permit & Administrative Support",
+        description:
+            "We handle the full lifecycle of expatriate engagement in Nigeria — from work permits and visas to quotas, payroll, tax compliance, medicals, and repatriation.",
+        bullets: [
+            "Work permits, visas & quotas",
+            "Payroll & tax compliance",
+            "Medicals & repatriation",
+            "End-to-end regulatory support",
+        ],
+        imageSrc: "/images/services/recruitment.jpg",
+    },
+    {
+        id: "payroll-compliance",
+        tag: "Service",
+        title: "Payroll & Compliance Management",
+        description:
+            "We handle payroll processing, statutory deductions, and regulatory reporting with precision and confidentiality — keeping your organisation fully compliant.",
+        bullets: [
+            "Accurate payroll processing",
+            "Statutory deductions & PAYE",
+            "Pension & NSITF contributions",
+            "Full regulatory reporting",
+        ],
+        imageSrc: "/images/services/global-hr.jpg",
+    },
 ];
 
 
