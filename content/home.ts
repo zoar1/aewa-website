@@ -23,42 +23,42 @@ export const services = [
         description:
             "We deliver high-performance workforce solutions across Oil & Gas, EPCM, power, infrastructure, and industrial sectors — deploying skilled, semi-skilled, and unskilled personnel both local and expatriate.",
         href: "/services/technical-recruitment",
-        icon: "👥",
+        icon: "users",
     },
     {
         title: "Skilled Trades Deployment",
         description:
             "Our pool of certified artisans and technicians — welders, electricians, riggers, scaffolders, and equipment operators — are project-ready and safety compliant for fabrication, construction, shutdowns, and offshore operations.",
         href: "/services/skilled-trades",
-        icon: "🔧",
+        icon: "wrench",
     },
     {
         title: "Expatriate Work Permit & Administrative Support",
         description:
             "We handle the full lifecycle of expatriate engagement in Nigeria: work permits and visas, quotas, payroll, tax compliance, medicals, and repatriation — end-to-end.",
         href: "/services/expatriate-support",
-        icon: "📋",
+        icon: "file-check",
     },
     {
         title: "QA/QC & Technical Inspection Services",
         description:
             "We provide certified QA/QC professionals to safeguard quality and compliance across engineering and construction projects, including NDT, welding inspections, FAT/SAT, and third-party audits.",
         href: "/services/qa-qc-inspection",
-        icon: "🔍",
+        icon: "scan-search",
     },
     {
         title: "Offshore Crew & Manning Services",
         description:
             "From offshore crew supply and rotation management to strategic workforce planning, we combine precision and discretion to help you build and manage high-performing teams.",
         href: "/services/offshore-manning",
-        icon: "⚓",
+        icon: "anchor",
     },
     {
         title: "Payroll & Compliance Management",
         description:
             "We handle payroll processing, statutory deductions, and regulatory reporting with precision and confidentiality — keeping your workforce paid and your organisation fully compliant.",
         href: "/services/payroll-compliance",
-        icon: "💼",
+        icon: "briefcase",
     },
 ];
 

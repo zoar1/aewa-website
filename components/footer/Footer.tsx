@@ -16,7 +16,7 @@ export default function Footer() {
                         <img
                             src="/brand/aewa-logo-light.png"
                             alt={site.name}
-                            className="h-10 w-auto object-contain"
+                            className="h-10 w-auto object-contain self-start"
                         />
                         <p className="text-white/60 text-[15px] leading-relaxed max-w-[300px]">
                             {site.description}

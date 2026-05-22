@@ -14,10 +14,10 @@ const TRIPLED = [...CERTIFICATIONS, ...CERTIFICATIONS, ...CERTIFICATIONS];
 export default function LogoStrip() {
   return (
     <div className="bg-white py-14">
-      {/* Heading — full-width so text-center is genuinely centred on screen */}
-      <p className="w-full text-xs font-semibold text-[#555555] text-center uppercase tracking-[0.18em] mb-10">
+      {/* Heading — div (not p) so the global max-width:720px on <p> doesn't offset centering */}
+      <div className="w-full text-xs font-semibold text-[#555555] text-center uppercase tracking-[0.18em] mb-10">
         Our Certifications &amp; Accreditations
-      </p>
+      </div>
 
       {/* Marquee — constrained to site max-width so logos don't go full edge-to-edge */}
       <div className="mx-auto w-full max-w-[1280px] px-5 md:px-8">

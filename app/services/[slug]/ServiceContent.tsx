@@ -6,6 +6,7 @@ import Section from "@/components/layout/Section";
 import ServiceCard from "@/components/shared/ServiceCard";
 import { serviceDetails } from "@/content/pages";
 import { services } from "@/content/home";
+import ServiceIcon from "@/components/shared/ServiceIcon";
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -116,7 +117,11 @@ export default function ServiceContent({ slug }: Props) {
                                             : "text-[#555555] hover:text-[#111111] hover:bg-white"
                                         }`}
                                 >
-                                    <span>{s.icon}</span>
+                                    <ServiceIcon
+                                        name={s.icon}
+                                        size={16}
+                                        className={`shrink-0 ${s.slug === slug ? "text-white" : "text-[#003366]"}`}
+                                    />
                                     {s.title}
                                 </Link>
                             ))}

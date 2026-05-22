@@ -62,7 +62,7 @@ export const serviceDetails: Record<
     "technical-recruitment": {
         slug: "technical-recruitment",
         title: "Technical Recruitment & Manpower Solutions",
-        icon: "👥",
+        icon: "users",
         description:
             "We deliver high-performance workforce solutions across Oil & Gas, EPCM, power, infrastructure, and industrial sectors. From feasibility to commissioning, we deploy skilled, semi-skilled, and unskilled personnel both local and expatriate — ensuring the right talent is on ground, on time, and aligned with your project goals.",
         imageSrc: "/images/services/hero/recruitment.jpg",
@@ -81,7 +81,7 @@ export const serviceDetails: Record<
     "skilled-trades": {
         slug: "skilled-trades",
         title: "Skilled Trades Deployment",
-        icon: "🔧",
+        icon: "wrench",
         description:
             "Our pool of certified artisans and technicians — including welders, electricians, riggers, scaffolders, and equipment operators — are project-ready and safety compliant. We support fabrication, construction, shutdowns, maintenance, and offshore/onshore operations with reliable, experienced hands.",
         imageSrc: "/images/services/hero/recruitment.jpg",
@@ -100,7 +100,7 @@ export const serviceDetails: Record<
     "expatriate-support": {
         slug: "expatriate-support",
         title: "Expatriate Work Permit & Administrative Support",
-        icon: "📋",
+        icon: "file-check",
         description:
             "We handle the full lifecycle of expatriate engagement in Nigeria — from work permits and visas to quotas, payroll, tax compliance, medicals, and repatriation. Our end-to-end support ensures seamless onboarding and strict adherence to regulatory requirements.",
         imageSrc: "/images/services/hero/global-hr.jpg",
@@ -123,7 +123,7 @@ export const serviceDetails: Record<
     "qa-qc-inspection": {
         slug: "qa-qc-inspection",
         title: "QA/QC & Technical Inspection Services",
-        icon: "🔍",
+        icon: "scan-search",
         description:
             "We provide certified QA/QC professionals to safeguard quality and compliance across engineering and construction projects. Our services include NDT, welding inspections, FAT/SAT, third-party audits, and in-service inspections — ensuring your assets meet global standards at every stage.",
         imageSrc: "/images/services/hero/security.jpg",
@@ -146,7 +146,7 @@ export const serviceDetails: Record<
     "offshore-manning": {
         slug: "offshore-manning",
         title: "Offshore Crew & Manning Services",
-        icon: "⚓",
+        icon: "anchor",
         description:
             "From offshore crew supply and rotation management, we support both operational and strategic workforce needs. We combine precision and discretion to help you build and manage high-performing teams.",
         imageSrc: "/images/services/hero/training.jpg",
@@ -165,7 +165,7 @@ export const serviceDetails: Record<
     "payroll-compliance": {
         slug: "payroll-compliance",
         title: "Payroll & Compliance Management",
-        icon: "💼",
+        icon: "briefcase",
         description:
             "We handle payroll processing, statutory deductions, and regulatory reporting with precision and confidentiality. Our service ensures your workforce is paid accurately and your organisation remains fully compliant with all legal requirements.",
         imageSrc: "/images/services/hero/local-representation.jpg",
