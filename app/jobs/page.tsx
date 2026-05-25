@@ -7,6 +7,8 @@ import Footer from "@/components/footer/Footer";
 import { fetchJobs } from "@/lib/jobs";
 import JobsClient from "@/components/JobsClient";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
     title: "Current Opportunities | AEWA — All Energy West Africa",
     description:
