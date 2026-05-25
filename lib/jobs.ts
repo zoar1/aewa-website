@@ -24,9 +24,12 @@ export async function fetchJobs(): Promise<ZohoJob[]> {
             return [];
         }
 
-        // Only show publicly published jobs, sorted newest first
+        // Show all active jobs (In-progress status), sorted newest first
         return json.data
-            .filter((job) => job.Publish === true)
+            .filter((job) =>
+                job.Job_Opening_Status?.toLowerCase() === "in-progress" ||
+                job.Job_Opening_Status?.toLowerCase() === "active"
+            )
             .sort(
                 (a, b) =>
                     new Date(b.Date_Opened).getTime() - new Date(a.Date_Opened).getTime()
