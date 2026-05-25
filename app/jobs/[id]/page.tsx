@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
     return {
         title: `${job.Job_Opening_Name} | AEWA Careers`,
-        description: job.Job_Description.slice(0, 160),
+        description: job.Job_Description?.slice(0, 160) ?? "",
     };
 }
 
@@ -33,7 +33,7 @@ export default async function JobDetailPage({ params }: PageProps) {
 
     return (
         <>
-            <Navbar />
+            <Navbar solid />
             <main>
                 <JobDetailContent job={job} />
             </main>

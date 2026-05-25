@@ -11,11 +11,14 @@ const LOGO_LIGHT = "/brand/aewa-logo-light.png";
 // Dark logo — used on the white scrolled nav
 const LOGO_DARK = "/brand/aewa-logo-dark.png";
 
-export default function Navbar() {
+export default function Navbar({ solid = false }: { solid?: boolean }) {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [lightError, setLightError] = useState(false);
     const [darkError, setDarkError] = useState(false);
+
+    // Pages without a dark hero pass solid=true, which locks the nav to its white state
+    const isWhite = solid || scrolled;
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -23,16 +26,16 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // When at top (transparent bg): white text. When scrolled (white bg): dark text.
-    const textColor = scrolled ? "text-[#555555]" : "text-white/90";
-    const textHover = scrolled ? "hover:text-[#111111] hover:bg-[#F7F7F6]" : "hover:text-white hover:bg-white/10";
-    const logoNameColor = scrolled ? "text-[#111111]" : "text-white";
-    const logoSubColor = scrolled ? "text-[#555555]" : "text-white/70";
-    const hamburgerColor = scrolled ? "bg-[#111111]" : "bg-white";
+    // When at top (transparent bg): white text. When scrolled or solid page: dark text.
+    const textColor = isWhite ? "text-[#555555]" : "text-white/90";
+    const textHover = isWhite ? "hover:text-[#111111] hover:bg-[#F7F7F6]" : "hover:text-white hover:bg-white/10";
+    const logoNameColor = isWhite ? "text-[#111111]" : "text-white";
+    const logoSubColor = isWhite ? "text-[#555555]" : "text-white/70";
+    const hamburgerColor = isWhite ? "bg-[#111111]" : "bg-white";
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isWhite
                 ? "bg-white/95 backdrop-blur-md border-b border-[#E5E5E5] shadow-[0_2px_20px_rgba(0,0,0,0.06)]"
                 : "bg-transparent"
                 }`}
@@ -43,13 +46,13 @@ export default function Navbar() {
                     <Link href="/" className="flex items-center group">
                         <div className="relative h-9 flex items-center">
 
-                            {/* LIGHT logo (visible at top, hidden when scrolled) */}
+                            {/* LIGHT logo (visible at top, hidden when scrolled or solid) */}
                             {!lightError ? (
                                 // eslint-disable-next-line @next/next/no-img-element
                                 <img
                                     src={LOGO_LIGHT}
                                     alt="AEWA"
-                                    className={`h-9 w-auto object-contain absolute inset-0 transition-opacity duration-300 ${scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
+                                    className={`h-9 w-auto object-contain absolute inset-0 transition-opacity duration-300 ${isWhite ? "opacity-0 pointer-events-none" : "opacity-100"
                                         }`}
                                     onError={() => setLightError(true)}
                                 />
@@ -64,13 +67,13 @@ export default function Navbar() {
                                 </div>
                             )}
 
-                            {/* DARK logo (hidden at top, visible when scrolled) */}
+                            {/* DARK logo (hidden at top, visible when scrolled or solid) */}
                             {!darkError ? (
                                 // eslint-disable-next-line @next/next/no-img-element
                                 <img
                                     src={LOGO_DARK}
                                     alt="AEWA"
-                                    className={`h-9 w-auto object-contain transition-opacity duration-300 ${scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
+                                    className={`h-9 w-auto object-contain transition-opacity duration-300 ${isWhite ? "opacity-100" : "opacity-0 pointer-events-none"
                                         }`}
                                     onError={() => setDarkError(true)}
                                 />
