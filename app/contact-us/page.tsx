@@ -14,6 +14,7 @@ export default function ContactPage() {
                     eyebrow="Get in Touch"
                     title={contact.headline}
                     description={contact.description}
+                    imageSrc="/images/hero/contact.jpg"
                     breadcrumbs={[{ label: "Contact Us", href: "/contact-us" }]}
                 />
                 <ContactForm />
