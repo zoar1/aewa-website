@@ -2,7 +2,7 @@ import { ZohoJob } from "@/types/jobs";
 import { unstable_cache } from "next/cache";
 
 const TOKEN_URL = "https://accounts.zoho.com/oauth/v2/token";
-const JOBS_URL = "https://recruit.zohoapis.com/recruit/v2/JobOpenings";
+const JOBS_URL = "https://recruit.zoho.com/recruit/v2/JobOpenings";
 
 async function getAccessToken(): Promise<string> {
     const res = await fetch(TOKEN_URL, {
