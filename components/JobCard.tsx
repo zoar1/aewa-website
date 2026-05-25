@@ -7,8 +7,8 @@ interface JobCardProps {
     job: ZohoJob;
 }
 
-function getJobTypeBadge(jobType: string) {
-    const type = jobType.toLowerCase();
+function getJobTypeBadge(jobType: string | null | undefined) {
+    const type = (jobType ?? "").toLowerCase();
     if (type.includes("full")) {
         return { label: "Full-time", className: "bg-[#003366] text-white" };
     }
@@ -18,7 +18,8 @@ function getJobTypeBadge(jobType: string) {
     return { label: "Contract", className: "bg-[#E5E5E5] text-[#555555]" };
 }
 
-function getDescriptionPreview(description: string, maxChars = 140): string {
+function getDescriptionPreview(description: string | null | undefined, maxChars = 140): string {
+    if (!description) return "";
     const cleaned = description.replace(/\s+/g, " ").trim();
     if (cleaned.length <= maxChars) return cleaned;
     return cleaned.slice(0, maxChars).trimEnd() + "…";

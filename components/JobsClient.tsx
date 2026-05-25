@@ -15,8 +15,8 @@ type Filters = {
     department: string;
 };
 
-function normaliseJobType(raw: string): string {
-    const t = raw.toLowerCase();
+function normaliseJobType(raw: string | null | undefined): string {
+    const t = (raw ?? "").toLowerCase();
     if (t.includes("full")) return "Full-time";
     if (t.includes("part")) return "Part-time";
     return "Contract";
@@ -142,7 +142,7 @@ export default function JobsClient({ jobs }: JobsClientProps) {
         const q = query.toLowerCase();
         return jobs
             .filter((j) =>
-                j.Job_Opening_Name.toLowerCase().includes(q) ||
+                j.Job_Opening_Name?.toLowerCase().includes(q) ||
                 j.Client_Name?.name?.toLowerCase().includes(q) ||
                 j.City?.toLowerCase().includes(q)
             )
@@ -156,7 +156,7 @@ export default function JobsClient({ jobs }: JobsClientProps) {
             const deptMatch = !filters.department || job.Industry === filters.department;
             const q = query.trim().toLowerCase();
             const queryMatch = !q ||
-                job.Job_Opening_Name.toLowerCase().includes(q) ||
+                job.Job_Opening_Name?.toLowerCase().includes(q) ||
                 job.Client_Name?.name?.toLowerCase().includes(q) ||
                 job.City?.toLowerCase().includes(q);
             return typeMatch && locationMatch && deptMatch && queryMatch;
