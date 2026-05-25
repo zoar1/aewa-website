@@ -1,31 +1,69 @@
-import { ZohoJob, JobsApiResponse } from "@/types/jobs";
+import { ZohoJob } from "@/types/jobs";
+import { unstable_cache } from "next/cache";
 
-// Call the upstream API directly — avoids any dependency on the deployment URL
-const UPSTREAM_URL = "https://eorkh6dh9m50sfq.m.pipedream.net";
+const TOKEN_URL = "https://accounts.zoho.com/oauth/v2/token";
+const JOBS_URL = "https://recruit.zohoapis.com/recruit/v2/JobOpenings";
 
-/**
- * Fetch all published jobs from the Zoho Recruit API.
- * Revalidates every 5 minutes (300s) so Vercel caches the result.
- */
-export async function fetchJobs(): Promise<ZohoJob[]> {
-    try {
-        const res = await fetch(UPSTREAM_URL, {
-            next: { revalidate: 300 },
+async function getAccessToken(): Promise<string> {
+    const res = await fetch(TOKEN_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+            grant_type: "refresh_token",
+            client_id: process.env.ZOHO_CLIENT_ID!,
+            client_secret: process.env.ZOHO_CLIENT_SECRET!,
+            refresh_token: process.env.ZOHO_REFRESH_TOKEN!,
+        }),
+        cache: "no-store",
+    });
+
+    const data = await res.json();
+
+    if (!data.access_token) {
+        throw new Error(`Failed to get Zoho access token: ${JSON.stringify(data)}`);
+    }
+
+    return data.access_token;
+}
+
+// Cache the full job list for 5 minutes
+const fetchJobsFromZoho = unstable_cache(
+    async (): Promise<ZohoJob[]> => {
+        const accessToken = await getAccessToken();
+
+        const res = await fetch(JOBS_URL, {
+            headers: {
+                Authorization: `Zoho-oauthtoken ${accessToken}`,
+            },
+            cache: "no-store",
         });
 
         if (!res.ok) {
-            console.error(`Jobs API responded with status ${res.status}`);
+            console.error(`Zoho Recruit API responded with status ${res.status}`);
             return [];
         }
 
-        const json: JobsApiResponse = await res.json();
+        const json = await res.json();
 
         if (!json?.data || !Array.isArray(json.data)) {
             return [];
         }
 
-        // Show all active jobs (In-progress status), sorted newest first
-        return json.data
+        return json.data;
+    },
+    ["zoho-jobs"],
+    { revalidate: 300 }
+);
+
+/**
+ * Fetch all active jobs from Zoho Recruit directly (no Pipedream).
+ * Revalidates every 5 minutes (300s).
+ */
+export async function fetchJobs(): Promise<ZohoJob[]> {
+    try {
+        const jobs = await fetchJobsFromZoho();
+
+        return jobs
             .filter((job) =>
                 job.Job_Opening_Status?.toLowerCase() === "in-progress" ||
                 job.Job_Opening_Status?.toLowerCase() === "active"
@@ -42,18 +80,11 @@ export async function fetchJobs(): Promise<ZohoJob[]> {
 
 /**
  * Get a single job by its Zoho record ID.
- * Fetches all jobs and filters — the endpoint doesn't support individual ID lookup.
  */
 export async function getJobById(id: string): Promise<ZohoJob | null> {
     try {
-        const res = await fetch(UPSTREAM_URL, {
-            next: { revalidate: 300 },
-        });
-
-        if (!res.ok) return null;
-
-        const json: JobsApiResponse = await res.json();
-        return json?.data?.find((job) => job.id === id) ?? null;
+        const jobs = await fetchJobsFromZoho();
+        return jobs.find((job) => job.id === id) ?? null;
     } catch {
         return null;
     }
