@@ -31,7 +31,10 @@ export default function JobCard({ job }: JobCardProps) {
     const location = [job.City, job.State].filter(Boolean).join(", ");
 
     return (
-        <article className="flex flex-col h-full bg-white rounded-[24px] border border-[#E5E5E5] shadow-[0_10px_30px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+        <Link
+            href={`/jobs/${job.id}`}
+            className="flex flex-col h-full bg-white rounded-[24px] border border-[#E5E5E5] shadow-[0_10px_30px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] hover:border-[#003366]/30 transition-all duration-300 group"
+        >
             <div className="flex flex-col flex-1 p-7 gap-4">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
                     <span
@@ -46,7 +49,7 @@ export default function JobCard({ job }: JobCardProps) {
                     )}
                 </div>
 
-                <h3 className="text-[#111111] font-semibold leading-tight line-clamp-2">
+                <h3 className="text-[#111111] font-semibold leading-tight line-clamp-2 group-hover:text-[#003366] transition-colors duration-200">
                     {job.Job_Opening_Name}
                 </h3>
 
@@ -59,47 +62,24 @@ export default function JobCard({ job }: JobCardProps) {
                             stroke="currentColor"
                             strokeWidth={1.8}
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                            />
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                            />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                         </svg>
                         <span>{location}</span>
                     </div>
                 )}
 
-                <p className="text-sm text-[#555555] leading-relaxed flex-1">
-                    {preview}
-                </p>
+                <p className="text-sm text-[#555555] leading-relaxed flex-1">{preview}</p>
             </div>
 
             <div className="px-7 pb-7">
-                <Link
-                    href={`/jobs/${job.id}`}
-                    className="inline-flex items-center justify-center w-full px-5 py-3 bg-[#003366] text-white text-sm font-semibold rounded-full border border-[#003366] hover:bg-[#004080] transition-colors duration-200"
-                >
+                <span className="inline-flex items-center justify-center w-full px-5 py-3 bg-[#003366] text-white text-sm font-semibold rounded-full group-hover:bg-[#004080] transition-colors duration-200">
                     View Role
-                    <svg
-                        className="ml-2 w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                        />
+                    <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
-                </Link>
+                </span>
             </div>
-        </article>
+        </Link>
     );
 }

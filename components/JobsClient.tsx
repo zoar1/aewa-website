@@ -107,6 +107,8 @@ function HighlightMatch({ text, query }: { text: string; query: string }) {
     );
 }
 
+const INITIAL_VISIBLE = 3;
+
 export default function JobsClient({ jobs }: JobsClientProps) {
     const [filters, setFilters] = useState<Filters>({
         jobType: "",
@@ -116,6 +118,7 @@ export default function JobsClient({ jobs }: JobsClientProps) {
 
     const [query, setQuery] = useState("");
     const [showDropdown, setShowDropdown] = useState(false);
+    const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
     const searchRef = useRef<HTMLDivElement>(null);
 
     /* Close dropdown when clicking outside */
@@ -172,6 +175,7 @@ export default function JobsClient({ jobs }: JobsClientProps) {
     function clearAll() {
         setFilters({ jobType: "", location: "", department: "" });
         setQuery("");
+        setVisibleCount(INITIAL_VISIBLE);
     }
 
     function selectSuggestion(job: ZohoJob) {
@@ -378,19 +382,32 @@ export default function JobsClient({ jobs }: JobsClientProps) {
                     </p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filtered.map((job, i) => (
-                        <motion.div
-                            key={job.id}
-                            className="h-full"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.05 }}
-                        >
-                            <JobCard job={job} />
-                        </motion.div>
-                    ))}
-                </div>
+                <>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filtered.slice(0, visibleCount).map((job, i) => (
+                            <motion.div
+                                key={job.id}
+                                className="h-full"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.05 }}
+                            >
+                                <JobCard job={job} />
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {filtered.length > visibleCount && (
+                        <div className="flex justify-center mt-10">
+                            <button
+                                onClick={() => setVisibleCount((prev) => prev + 6)}
+                                className="btn-secondary px-8"
+                            >
+                                View More Roles ({filtered.length - visibleCount} remaining)
+                            </button>
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );

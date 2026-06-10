@@ -70,40 +70,43 @@ export default function ServiceContent({ slug }: Props) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-5"
+                    className="grid grid-cols-1 md:grid-cols-2 gap-5"
                 >
-                    {/* CTA card */}
-                    <div className="bg-[#0E1A2B] rounded-[24px] p-8 text-white flex flex-col gap-5">
-                        <p className="text-xs font-semibold uppercase tracking-widest text-white/40">
-                            Ready to get started?
-                        </p>
-                        <h3 className="text-xl font-bold leading-snug">
-                            Speak with an All Energy West Africa specialist today
-                        </h3>
-                        <Link href="/contact-us" className="btn-primary bg-white text-[#111111] hover:bg-white/90 border-white mt-auto">
-                            Contact Us
-                        </Link>
+                    {/* Left column: CTA + Brochure stacked */}
+                    <div className="flex flex-col gap-5">
+                        {/* CTA card */}
+                        <div className="bg-[#0E1A2B] rounded-[24px] p-8 text-white flex flex-col gap-5 flex-1">
+                            <p className="text-xs font-semibold uppercase tracking-widest text-white/40">
+                                Ready to get started?
+                            </p>
+                            <h3 className="text-xl font-bold leading-snug">
+                                Speak with an All Energy West Africa specialist today
+                            </h3>
+                            <Link href="/contact-us" className="btn-primary bg-white text-[#111111] hover:bg-white/90 border-white mt-auto">
+                                Contact Us
+                            </Link>
+                        </div>
+
+                        {/* Download brochure */}
+                        <a
+                            href="https://aewanl.com/AEWA_Company_Profile.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-4 bg-white border border-[#E5E5E5] rounded-[24px] p-6 hover:border-[#111111] transition-colors duration-200 group"
+                        >
+                            <div className="w-10 h-10 rounded-[10px] bg-[#F7F7F6] border border-[#E5E5E5] flex items-center justify-center text-lg flex-shrink-0">
+                                📄
+                            </div>
+                            <div>
+                                <p className="text-sm font-semibold text-[#111111] group-hover:underline">
+                                    Company Brochure
+                                </p>
+                                <p className="text-xs text-[#555555] mt-1">Download PDF ↗</p>
+                            </div>
+                        </a>
                     </div>
 
-                    {/* Download brochure */}
-                    <a
-                        href="https://aewanl.com/AEWA_Company_Profile.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-start gap-4 bg-white border border-[#E5E5E5] rounded-[24px] p-8 hover:border-[#111111] transition-colors duration-200 group"
-                    >
-                        <div className="w-10 h-10 rounded-[10px] bg-[#F7F7F6] border border-[#E5E5E5] flex items-center justify-center text-lg flex-shrink-0">
-                            📄
-                        </div>
-                        <div>
-                            <p className="text-sm font-semibold text-[#111111] group-hover:underline">
-                                Company Brochure
-                            </p>
-                            <p className="text-xs text-[#555555] mt-1">Download PDF ↗</p>
-                        </div>
-                    </a>
-
-                    {/* All services */}
+                    {/* Right column: All services */}
                     <div className="bg-white border border-[#E5E5E5] rounded-[24px] p-6 flex flex-col gap-2">
                         <p className="text-xs font-semibold uppercase tracking-widest text-[#555555] mb-2">
                             All Services

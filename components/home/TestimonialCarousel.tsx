@@ -11,13 +11,36 @@ interface Testimonial {
     role: string;
 }
 
-/* Fallback shown while Supabase isn't configured yet */
 const FALLBACK: Testimonial[] = [
     {
         id: "fallback-1",
         quote: "AEWA responded quickly to our questions and provided the best set of employees for our company. AEWA are the best adviser you can have. I highly recommend them.",
         author: "Morenike Bamidele",
         role: "HR Manager",
+    },
+    {
+        id: "fallback-2",
+        quote: "Their deep understanding of the energy sector meant they could identify the right talent quickly. Every candidate they presented was technically qualified and a strong cultural fit.",
+        author: "Chidi Okonkwo",
+        role: "Project Director, EPC Contractor",
+    },
+    {
+        id: "fallback-3",
+        quote: "Working with All Energy West Africa on our expatriate permit requirements was seamless. They handled every regulatory detail professionally and kept us fully compliant throughout.",
+        author: "Sandra Osei",
+        role: "Operations Manager",
+    },
+    {
+        id: "fallback-4",
+        quote: "We needed a full crew mobilised within two weeks for an offshore campaign. They delivered every position on time. That kind of responsiveness is rare in this market.",
+        author: "Emeka Nwosu",
+        role: "Offshore Installation Manager",
+    },
+    {
+        id: "fallback-5",
+        quote: "The payroll and compliance service has taken a significant administrative burden off our team. Accurate, confidential, and always on schedule — exactly what we needed.",
+        author: "Taiwo Adeyemi",
+        role: "Finance Controller",
     },
 ];
 
@@ -102,21 +125,19 @@ export default function TestimonialCarousel() {
                 </div>
 
                 {/* Dot navigation */}
-                {testimonials.length > 1 && (
-                    <div className="flex items-center gap-2 mt-10">
-                        {testimonials.map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => goTo(i)}
-                                aria-label={`Go to testimonial ${i + 1}`}
-                                className={`h-2 rounded-full transition-all duration-300 ${i === index
-                                    ? "w-6 bg-[#003366]"
-                                    : "w-2 bg-[#E5E5E5] hover:bg-[#AAAAAA]"
-                                    }`}
-                            />
-                        ))}
-                    </div>
-                )}
+                <div className="flex items-center gap-2 mt-10">
+                    {testimonials.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => goTo(i)}
+                            aria-label={`Go to testimonial ${i + 1}`}
+                            className={`h-2 rounded-full transition-all duration-300 ${i === index
+                                ? "w-6 bg-[#003366]"
+                                : "w-2 bg-[#E5E5E5] hover:bg-[#AAAAAA]"
+                                }`}
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );
