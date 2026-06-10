@@ -5,7 +5,14 @@ import { revalidatePath } from "next/cache";
 const SECTION_PATHS: Record<string, string[]> = {
   homepage: ["/"],
   about: ["/about-us"],
-  global: ["/", "/about-us", "/contact-us", "/services"],
+  contact: ["/contact-us"],
+  global: ["/", "/about-us", "/contact-us", "/jobs"],
+  "service-technical-recruitment": ["/services/technical-recruitment"],
+  "service-skilled-trades": ["/services/skilled-trades"],
+  "service-expatriate-support": ["/services/expatriate-support"],
+  "service-qa-qc-inspection": ["/services/qa-qc-inspection"],
+  "service-offshore-manning": ["/services/offshore-manning"],
+  "service-payroll-compliance": ["/services/payroll-compliance"],
 };
 
 export async function GET(req: NextRequest) {

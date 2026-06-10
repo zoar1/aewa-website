@@ -7,6 +7,7 @@ import Footer from "@/components/footer/Footer";
 import { fetchJobs } from "@/lib/jobs";
 import JobsClient from "@/components/JobsClient";
 import CVSubmitSection from "@/components/jobs/CVSubmitSection";
+import { getSectionContent, get, DEFAULTS } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +18,11 @@ export const metadata: Metadata = {
 };
 
 export default async function JobsPage() {
-    const jobs = await fetchJobs();
+    const [jobs, globalContent] = await Promise.all([
+        fetchJobs(),
+        getSectionContent("global"),
+    ]);
+    const g = DEFAULTS.global;
 
     return (
         <>
@@ -34,7 +39,10 @@ export default async function JobsPage() {
                     <JobsClient jobs={jobs} />
                 </Section>
 
-                <CVSubmitSection />
+                <CVSubmitSection
+                    heading={get(globalContent, "talent_pool_heading", g.talent_pool_heading)}
+                    description={get(globalContent, "talent_pool_description", g.talent_pool_description)}
+                />
                 <CTASection />
             </main>
             <Footer />

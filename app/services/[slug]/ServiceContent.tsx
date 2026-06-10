@@ -19,11 +19,17 @@ const fadeUp: Variants = {
 
 interface Props {
     slug: string;
+    contentOverrides?: Record<string, string>;
 }
 
-export default function ServiceContent({ slug }: Props) {
+export default function ServiceContent({ slug, contentOverrides }: Props) {
     const service = serviceDetails[slug];
     if (!service) return null;
+
+    const sections = service.sections.map((sec, i) => ({
+        title: contentOverrides?.[`section_${i}_title`] || sec.title,
+        body: contentOverrides?.[`section_${i}_body`] || sec.body,
+    }));
 
     const related = service.relatedSlugs
         .map((s) => {
@@ -41,9 +47,9 @@ export default function ServiceContent({ slug }: Props) {
             {/* Main content */}
             <Section className="bg-white">
                 <div className="flex flex-col gap-12">
-                    {service.sections.map((section, i) => (
+                    {sections.map((section, i) => (
                         <motion.div
-                            key={section.title}
+                            key={i}
                             custom={i}
                             initial="hidden"
                             whileInView="visible"

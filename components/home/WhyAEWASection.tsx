@@ -108,7 +108,15 @@ function ProgressBar({
 /* ─────────────────────────────────────────────
    Main section
 ───────────────────────────────────────────── */
-export default function WhyAEWASection() {
+interface WhyAEWAProps {
+    eyebrow?: string;
+    heading?: string;
+    subtext?: string;
+    cards?: { title: string; description: string }[];
+}
+
+export default function WhyAEWASection({ eyebrow, heading, subtext, cards }: WhyAEWAProps = {}) {
+    const items = cards ?? valueProps;
     const sectionRef = useRef<HTMLElement>(null);
 
     const { scrollYProgress } = useScroll({
@@ -144,7 +152,7 @@ export default function WhyAEWASection() {
                                     letterSpacing: "0.18em",
                                 }}
                             >
-                                The AEWA Advantage
+                                {eyebrow ?? "The AEWA Advantage"}
                             </motion.p>
 
                             {/* Heading */}
@@ -161,7 +169,7 @@ export default function WhyAEWASection() {
                                     maxWidth: "360px",
                                 }}
                             >
-                                Why Leading Organisations Choose All Energy West Africa
+                                {heading ?? "Why Leading Organisations Choose All Energy West Africa"}
                             </motion.h2>
 
                             {/* Sub-text */}
@@ -177,7 +185,7 @@ export default function WhyAEWASection() {
                                     maxWidth: "300px",
                                 }}
                             >
-                                Six reasons Africa's most demanding organisations trust us to deliver.
+                                {subtext ?? "Six reasons Africa's most demanding organisations trust us to deliver."}
                             </motion.p>
 
                             {/* CTA */}
@@ -239,10 +247,10 @@ export default function WhyAEWASection() {
                                 letterSpacing: "-0.02em",
                             }}
                         >
-                            Why Leading Organisations Choose AEWA
+                            {heading ?? "Why Leading Organisations Choose All Energy West Africa"}
                         </h2>
                         <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "14px" }}>
-                            Six reasons Africa's most demanding organisations trust us to deliver.
+                            {subtext ?? "Six reasons Africa's most demanding organisations trust us to deliver."}
                         </p>
                     </div>
 
@@ -251,7 +259,7 @@ export default function WhyAEWASection() {
 
                     {/* Cards — generous spacing for clarity and height */}
                     <div className="flex flex-col gap-12 md:gap-20">
-                        {valueProps.map((prop, i) => (
+                        {items.map((prop, i) => (
                             <WhyCard
                                 key={prop.title}
                                 index={i}

@@ -4,16 +4,22 @@ import Section from "@/components/layout/Section";
 import ContactForm from "./ContactForm";
 import Footer from "@/components/footer/Footer";
 import { contact } from "@/content/pages";
+import { getSectionContent, get, DEFAULTS } from "@/lib/content";
 
-export default function ContactPage() {
+export const revalidate = 60;
+
+export default async function ContactPage() {
+    const content = await getSectionContent("contact");
+    const d = DEFAULTS.contact;
+
     return (
         <>
             <Navbar />
             <main>
                 <PageHero
                     eyebrow="Get in Touch"
-                    title={contact.headline}
-                    description={contact.description}
+                    title={get(content, "headline", d.headline)}
+                    description={get(content, "description", d.description)}
                     imageSrc="/images/hero/contact.jpg"
                     breadcrumbs={[{ label: "Contact Us", href: "/contact-us" }]}
                 />

@@ -78,12 +78,17 @@ function StatCard({ value, label, delay }: { value: string; label: string; delay
     );
 }
 
+interface SuccessStoriesProps {
+    stats?: { value: string; label: string }[];
+}
+
 /* ─── Section — stats only, testimonial moved to TestimonialCarousel ─────── */
-export default function SuccessStoriesSection() {
+export default function SuccessStoriesSection({ stats: statItems }: SuccessStoriesProps = {}) {
+    const items = statItems ?? stats;
     return (
         <Section className="bg-white">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-                {stats.map((stat, i) => (
+                {items.map((stat, i) => (
                     <StatCard
                         key={stat.label}
                         value={stat.value}

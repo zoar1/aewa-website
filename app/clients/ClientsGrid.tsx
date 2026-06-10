@@ -1,38 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/layout/Section";
+import { createClient } from "@/lib/supabase/client";
 
-/* ─── Logo grid data — filenames from public/images/Client logos/ ─────────── */
-const CLIENT_LOGOS = [
-  { name: "Shell", file: "shell.png" },
-  { name: "TotalEnergies", file: "Total-energies.gif" },
-  { name: "ExxonMobil", file: "ExxonMobil-Logo.wine.png" },
-  { name: "Saipem", file: "Saipem.png" },
-  { name: "Fugro", file: "Logo_Fugro_Colour_RGB.jpg" },
-  { name: "NLNG", file: "NLNG.jpg" },
-  { name: "Nigeria LNG", file: "LNG.jpg" },
-  { name: "ND Western", file: "ND western.png" },
-  { name: "Brass LNG", file: "Brass LNG.jpg" },
-  { name: "OPAC Refineries", file: "Opac.png" },
-  { name: "NOV", file: "NOV.png" },
-  { name: "First E&P", file: "First E and P.png" },
-  { name: "LafargeHolcim", file: "Lafarge-Holcim.jpg.webp" },
-  { name: "Cainergy", file: "Cainergy.png" },
-  { name: "Euro Tech", file: "Euro Tech.png" },
-  { name: "Prodeco", file: "Prodeco.png" },
-  { name: "Heliconia", file: "Heliconia.png" },
-  { name: "Chevron", file: "Chevron.jpg" },
-  { name: "Siemens", file: "SIEMENS.png" },
-  { name: "Schneider Electric", file: "Schneider Electric.png" },
-  { name: "Bollore", file: "Bollore.png" },
-  { name: "Bouygues", file: "Bouygues.png" },
-  { name: "Danone", file: "Danone.png" },
-  { name: "Nestle", file: "Nestle.png" },
-  { name: "Niger Dock", file: "nigerdock.png" },
-  { name: "CPL", file: "CPL_Logo_Web.jpg.webp" },
-  { name: "IPAS", file: "logo_Ipas.jpg" },
+/* ─── Static fallback ─── */
+const STATIC_LOGOS = [
+  { id: "s-bollore", name: "Bollore", file_url: "/images/Client logos/Bollore.png", active: true },
+  { id: "s-bouygues", name: "Bouygues", file_url: "/images/Client logos/Bouygues.png", active: true },
+  { id: "s-brass", name: "Brass LNG", file_url: "/images/Client logos/Brass LNG.jpg", active: true },
+  { id: "s-cainergy", name: "Cainergy", file_url: "/images/Client logos/Cainergy.png", active: true },
+  { id: "s-chevron", name: "Chevron", file_url: "/images/Client logos/Chevron.jpg", active: true },
+  { id: "s-cpl", name: "CPL", file_url: "/images/Client logos/CPL_Logo_Web.jpg.webp", active: true },
+  { id: "s-danone", name: "Danone", file_url: "/images/Client logos/Danone.png", active: true },
+  { id: "s-eurotech", name: "Euro Tech", file_url: "/images/Client logos/Euro Tech.png", active: true },
+  { id: "s-exxon", name: "ExxonMobil", file_url: "/images/Client logos/ExxonMobil-Logo.wine.png", active: true },
+  { id: "s-firstep", name: "First E&P", file_url: "/images/Client logos/First E and P.png", active: true },
+  { id: "s-fugro", name: "Fugro", file_url: "/images/Client logos/Logo_Fugro_Colour_RGB.jpg", active: true },
+  { id: "s-heliconia", name: "Heliconia", file_url: "/images/Client logos/Heliconia.png", active: true },
+  { id: "s-ipas", name: "IPAS", file_url: "/images/Client logos/logo_Ipas.jpg", active: true },
+  { id: "s-lafarge", name: "LafargeHolcim", file_url: "/images/Client logos/Lafarge-Holcim.jpg.webp", active: true },
+  { id: "s-ndwestern", name: "ND Western", file_url: "/images/Client logos/ND western.png", active: true },
+  { id: "s-nigerdock", name: "Niger Dock", file_url: "/images/Client logos/nigerdock.png", active: true },
+  { id: "s-nlng", name: "Nigeria LNG", file_url: "/images/Client logos/LNG.jpg", active: true },
+  { id: "s-nlng2", name: "NLNG", file_url: "/images/Client logos/NLNG.jpg", active: true },
+  { id: "s-nov", name: "NOV", file_url: "/images/Client logos/NOV.png", active: true },
+  { id: "s-nestle", name: "Nestle", file_url: "/images/Client logos/Nestle.png", active: true },
+  { id: "s-opac", name: "OPAC Refineries", file_url: "/images/Client logos/Opac.png", active: true },
+  { id: "s-prodeco", name: "Prodeco", file_url: "/images/Client logos/Prodeco.png", active: true },
+  { id: "s-saipem", name: "Saipem", file_url: "/images/Client logos/Saipem.png", active: true },
+  { id: "s-schneider", name: "Schneider Electric", file_url: "/images/Client logos/Schneider Electric.png", active: true },
+  { id: "s-shell", name: "Shell", file_url: "/images/Client logos/shell.png", active: true },
+  { id: "s-siemens", name: "Siemens", file_url: "/images/Client logos/SIEMENS.png", active: true },
+  { id: "s-total", name: "TotalEnergies", file_url: "/images/Client logos/Total-energies.gif", active: true },
 ];
 
 const sectors = [
@@ -83,18 +84,24 @@ const sectors = [
   },
 ];
 
-function LogoCard({ name, file }: { name: string; file: string }) {
+interface Logo {
+  id: string;
+  name: string;
+  file_url: string;
+  active: boolean;
+}
+
+function LogoCard({ name, file_url }: { name: string; file_url: string }) {
   const [imgError, setImgError] = useState(false);
-  const src = `/images/Client logos/${encodeURIComponent(file)}`;
 
   return (
     <div className="bg-white border border-[#E5E5E5] rounded-[16px] p-5 flex items-center justify-center h-24 hover:border-[#003366]/30 hover:shadow-md transition-all duration-200 group">
       {!imgError ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={src}
+          src={file_url}
           alt={name}
-          className="max-h-12 max-w-[120px] w-auto object-contain opacity-100 group-hover:opacity-70 grayscale-0 group-hover:grayscale transition-all duration-300"
+          className="max-h-12 max-w-[120px] w-auto object-contain opacity-100 group-hover:opacity-70 transition-all duration-300"
           onError={() => setImgError(true)}
         />
       ) : (
@@ -105,6 +112,26 @@ function LogoCard({ name, file }: { name: string; file: string }) {
 }
 
 export default function ClientsGrid() {
+  const [logos, setLogos] = useState<Logo[]>(STATIC_LOGOS);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("client_logos")
+      .select("id, name, file_url, active")
+      .eq("active", true)
+      .order("name", { ascending: true })
+      .then(({ data }) => {
+        if (data && data.length > 0) setLogos(data);
+        setLoaded(true);
+      });
+  }, []);
+
+  const visibleLogos = loaded
+    ? logos.filter((l) => l.active)
+    : STATIC_LOGOS;
+
   return (
     <>
       {/* Logo grid */}
@@ -123,15 +150,15 @@ export default function ClientsGrid() {
         </motion.div>
 
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-          {CLIENT_LOGOS.map((client, i) => (
+          {visibleLogos.map((client, i) => (
             <motion.div
-              key={client.name}
+              key={client.id}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.03 }}
             >
-              <LogoCard name={client.name} file={client.file} />
+              <LogoCard name={client.name} file_url={client.file_url} />
             </motion.div>
           ))}
         </div>

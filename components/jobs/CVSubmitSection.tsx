@@ -2,7 +2,12 @@
 
 import { useRef, useState } from "react";
 
-export default function CVSubmitSection() {
+interface CVSubmitProps {
+    heading?: string;
+    description?: string;
+}
+
+export default function CVSubmitSection({ heading, description }: CVSubmitProps = {}) {
     const [form, setForm] = useState({ name: "", email: "", phone: "", interest: "", message: "" });
     const [cvFile, setCvFile] = useState<File | null>(null);
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -47,10 +52,10 @@ export default function CVSubmitSection() {
                                 Talent Pool
                             </p>
                             <h2 className="text-white font-bold mb-4 max-w-[340px]">
-                                Don&apos;t See the Right Role For You?
+                                {heading ?? "Don't See the Right Role For You?"}
                             </h2>
                             <p className="text-white/70 leading-relaxed max-w-[380px] mb-6">
-                                Submit your CV and we'll keep you in mind for upcoming opportunities across our client portfolio. Our team is always looking for exceptional talent in the energy sector.
+                                {description ?? "Submit your CV and we'll keep you in mind for upcoming opportunities across our client portfolio. Our team is always looking for exceptional talent in the energy sector."}
                             </p>
                             <ul className="flex flex-col gap-3 text-sm text-white/70">
                                 {[

@@ -5,7 +5,13 @@ import Link from "next/link";
 import Section from "@/components/layout/Section";
 import { jobsTeaser } from "@/content/home";
 
-export default function JobsTeaserSection() {
+interface JobsTeaserProps {
+    eyebrow?: string;
+    headline?: string;
+    subCopy?: string;
+}
+
+export default function JobsTeaserSection({ eyebrow, headline, subCopy }: JobsTeaserProps = {}) {
     return (
         <Section className="bg-[#F7F7F6]">
             <motion.div
@@ -17,10 +23,10 @@ export default function JobsTeaserSection() {
             >
                 <div className="flex flex-col gap-3 max-w-[560px]">
                     <p className="text-sm font-semibold text-white/60 uppercase tracking-widest">
-                        {jobsTeaser.eyebrow}
+                        {eyebrow ?? jobsTeaser.eyebrow}
                     </p>
-                    <h2 className="text-white">{jobsTeaser.headline}</h2>
-                    <p className="text-white/70 text-base leading-relaxed">{jobsTeaser.subCopy}</p>
+                    <h2 className="text-white">{headline ?? jobsTeaser.headline}</h2>
+                    <p className="text-white/70 text-base leading-relaxed">{subCopy ?? jobsTeaser.subCopy}</p>
                 </div>
                 <div className="flex-shrink-0">
                     <Link
