@@ -33,14 +33,14 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-[#F7F7F6] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="flex items-center gap-3 mb-10 justify-center">
-          <div className="w-10 h-10 rounded-[10px] bg-[#003366] flex items-center justify-center">
-            <span className="text-white font-bold text-base">A</span>
-          </div>
-          <div>
-            <p className="font-bold text-[#111111] text-lg leading-none">AEWA</p>
-            <p className="text-xs text-[#555555]">Admin Dashboard</p>
-          </div>
+        <div className="flex flex-col items-center gap-2 mb-10">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/aewa-logo-dark.png"
+            alt="AEWA"
+            className="h-10 w-auto object-contain"
+          />
+          <p className="text-xs text-[#555555] font-medium tracking-wider uppercase">Admin Dashboard</p>
         </div>
 
         <div className="bg-white rounded-[24px] border border-[#E5E5E5] p-8 shadow-[0_10px_40px_rgba(0,0,0,0.06)]">

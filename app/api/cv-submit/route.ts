@@ -3,8 +3,14 @@ import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const body = await req.json();
-    const { name, email, phone, interest, message } = body;
+    const formData = await req.formData();
+
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const interest = formData.get("interest") as string;
+    const message = formData.get("message") as string;
+    const cvFile = formData.get("cv") as File | null;
 
     if (!name || !email) {
         return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
@@ -13,6 +19,16 @@ export async function POST(req: NextRequest) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
+    }
+
+    // Build attachments array if a CV was uploaded
+    const attachments: { filename: string; content: Buffer }[] = [];
+    if (cvFile && cvFile.size > 0) {
+        if (cvFile.size > 5 * 1024 * 1024) {
+            return NextResponse.json({ error: "CV file must be under 5 MB." }, { status: 400 });
+        }
+        const bytes = await cvFile.arrayBuffer();
+        attachments.push({ filename: cvFile.name, content: Buffer.from(bytes) });
     }
 
     const { error } = await resend.emails.send({
@@ -27,9 +43,11 @@ export async function POST(req: NextRequest) {
             ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
             ${interest ? `<p><strong>Area of Interest:</strong> ${interest}</p>` : ""}
             ${message ? `<p><strong>Message:</strong></p><p>${message.replace(/\n/g, "<br/>")}</p>` : ""}
+            ${attachments.length > 0 ? `<p><strong>CV attached:</strong> ${attachments[0].filename}</p>` : "<p><em>No CV file attached.</em></p>"}
             <hr />
             <p style="color:#888;font-size:12px">Submitted via the All Energy West Africa careers page.</p>
         `,
+        attachments,
     });
 
     if (error) {

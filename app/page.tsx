@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import Navbar from "@/components/nav/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import LogoStrip from "@/components/home/LogoStrip";
@@ -10,8 +12,12 @@ import StrategicPartnerSection from "@/components/home/StrategicPartnerSection";
 import Footer from "@/components/footer/Footer";
 import ServicesCarousel from "@/components/home/ServicesCarousel";
 import { servicesCarousel } from "@/content/home";
+import { getSectionContent, get, DEFAULTS } from "@/lib/content";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const content = await getSectionContent("homepage");
+  const d = DEFAULTS.homepage;
+
   return (
     <>
       <Navbar />
@@ -19,7 +25,10 @@ export default function HomePage() {
         <div style={{ position: "relative" }}>
           {/* HeroSection is sticky — scrolls with the page */}
           <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
-            <HeroSection />
+            <HeroSection
+              headline={get(content, "hero_headline", d.hero_headline)}
+              subCopy={get(content, "hero_subCopy", d.hero_subCopy)}
+            />
           </div>
 
           {/* Content slides over the sticky hero */}
@@ -42,7 +51,10 @@ export default function HomePage() {
             <TestimonialCarousel />
 
             <div style={{ backgroundColor: "#F7F7F6" }}>
-              <CTASection />
+              <CTASection
+                headline={get(content, "cta_headline", d.cta_headline)}
+                subCopy={get(content, "cta_subCopy", d.cta_subCopy)}
+              />
             </div>
 
             {/* Strategic partner — sits directly above the footer */}

@@ -1,23 +1,32 @@
+export const revalidate = 60;
+
 import Navbar from "@/components/nav/Navbar";
 import PageHero from "@/components/shared/PageHero";
-import Section from "@/components/layout/Section";
 import CTASection from "@/components/home/CTASection";
 import Footer from "@/components/footer/Footer";
 import { about } from "@/content/pages";
 import AboutContent from "./AboutContent";
+import { getSectionContent, get, DEFAULTS } from "@/lib/content";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+    const content = await getSectionContent("about");
+    const d = DEFAULTS.about;
+
     return (
         <>
             <Navbar />
             <main>
                 <PageHero
                     eyebrow="Who We Are"
-                    title={about.headline}
-                    description={about.description}
+                    title={get(content, "headline", d.headline)}
+                    description={get(content, "description", d.description)}
                     breadcrumbs={[{ label: "About Us", href: "/about-us" }]}
                 />
-                <AboutContent />
+                <AboutContent
+                    mission={get(content, "mission", d.mission)}
+                    vision={get(content, "vision", d.vision)}
+                    partnerDescription={get(content, "partner_description", d.partner_description)}
+                />
                 <CTASection />
             </main>
             <Footer />

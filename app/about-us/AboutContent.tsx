@@ -13,7 +13,13 @@ const fadeUp: Variants = {
     }),
 };
 
-export default function AboutContent() {
+interface AboutContentProps {
+    mission?: string;
+    vision?: string;
+    partnerDescription?: string;
+}
+
+export default function AboutContent({ mission, vision, partnerDescription }: AboutContentProps = {}) {
     return (
         <>
             {/* Mission & Vision */}
@@ -27,7 +33,7 @@ export default function AboutContent() {
                     >
                         <p className="text-sm font-semibold text-[#555555] uppercase tracking-widest mb-4">Our Mission</p>
                         <h2 className="text-[#111111] mb-6">Committed to Inspiring Positive Change</h2>
-                        <p className="text-[#555555] leading-relaxed">{about.mission}</p>
+                        <p className="text-[#555555] leading-relaxed">{mission ?? about.mission}</p>
                     </motion.div>
 
                     <motion.div
@@ -40,7 +46,7 @@ export default function AboutContent() {
                         {/* Vision card */}
                         <div className="bg-[#0E1A2B] rounded-[24px] p-8 text-white">
                             <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-3">Our Vision</p>
-                            <p className="text-lg font-semibold leading-relaxed">{about.vision}</p>
+                            <p className="text-lg font-semibold leading-relaxed">{vision ?? about.vision}</p>
                         </div>
 
                         {/* Sectors */}
@@ -102,12 +108,22 @@ export default function AboutContent() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="bg-[#003366] rounded-[24px] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8"
+                    className="bg-[#003366] rounded-[24px] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"
                 >
-                    <div className="flex-1">
+                    {/* Logo */}
+                    <div className="shrink-0 flex items-center justify-center w-32 h-16">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="/images/partners/davi-logo.png"
+                            alt="Davi Promau"
+                            className="max-h-14 w-auto object-contain"
+                        />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-3">Strategic Partner</p>
                         <h3 className="text-white text-2xl font-bold mb-3">{about.partner.name}</h3>
-                        <p className="text-white/80 leading-relaxed max-w-[540px]">{about.partner.description}</p>
+                        <p className="text-white/80 leading-relaxed max-w-[540px]">{partnerDescription ?? about.partner.description}</p>
                     </div>
                     <a
                         href={about.partner.url}

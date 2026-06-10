@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function CVSubmitSection() {
     const [form, setForm] = useState({ name: "", email: "", phone: "", interest: "", message: "" });
+    const [cvFile, setCvFile] = useState<File | null>(null);
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMsg, setErrorMsg] = useState("");
+    const fileRef = useRef<HTMLInputElement>(null);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -16,11 +18,11 @@ export default function CVSubmitSection() {
         setStatus("submitting");
         setErrorMsg("");
         try {
-            const res = await fetch("/api/cv-submit", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(form),
-            });
+            const body = new FormData();
+            Object.entries(form).forEach(([k, v]) => body.append(k, v));
+            if (cvFile) body.append("cv", cvFile, cvFile.name);
+
+            const res = await fetch("/api/cv-submit", { method: "POST", body });
             const data = await res.json();
             if (!res.ok) {
                 setErrorMsg(data.error || "Something went wrong.");
@@ -45,7 +47,7 @@ export default function CVSubmitSection() {
                                 Talent Pool
                             </p>
                             <h2 className="text-white font-bold mb-4 max-w-[340px]">
-                                Don't See the Right Role?
+                                Don&apos;t See the Right Role For You?
                             </h2>
                             <p className="text-white/70 leading-relaxed max-w-[380px] mb-6">
                                 Submit your CV and we'll keep you in mind for upcoming opportunities across our client portfolio. Our team is always looking for exceptional talent in the energy sector.
@@ -137,6 +139,21 @@ export default function CVSubmitSection() {
                                             onChange={handleChange}
                                             className="px-4 py-3 rounded-[12px] bg-[#F7F7F6] border border-[#E5E5E5] text-[#111111] placeholder:text-[#AAAAAA] text-sm focus:outline-none focus:border-[#003366] transition-colors resize-none"
                                         />
+
+                                        {/* CV file upload */}
+                                        <div className="flex flex-col gap-1.5">
+                                            <label className="text-xs font-semibold text-[#555555] uppercase tracking-wider">
+                                                Attach CV <span className="normal-case font-normal text-[#AAAAAA]">(PDF or DOCX, max 5 MB)</span>
+                                            </label>
+                                            <input
+                                                ref={fileRef}
+                                                type="file"
+                                                accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                                onChange={(e) => setCvFile(e.target.files?.[0] ?? null)}
+                                                className="w-full px-4 py-3 rounded-[12px] bg-[#F7F7F6] border border-[#E5E5E5] text-sm focus:outline-none focus:border-[#003366] transition-colors file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#E8EDF5] file:text-[#003366] hover:file:bg-[#D5E2F0] cursor-pointer"
+                                            />
+                                        </div>
+
                                         {errorMsg && (
                                             <p className="text-red-500 text-xs">{errorMsg}</p>
                                         )}

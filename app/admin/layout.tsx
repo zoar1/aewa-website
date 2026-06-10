@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 
 const NAV = [
   { label: "Dashboard", href: "/admin", icon: "⊞" },
+  { label: "Site Content", href: "/admin/content", icon: "✏️" },
   { label: "Testimonials", href: "/admin/testimonials", icon: "💬" },
   { label: "Client Logos", href: "/admin/clients", icon: "🏢" },
 ];
@@ -39,14 +40,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-60 bg-[#003366] flex flex-col min-h-screen sticky top-0">
         {/* Logo */}
         <div className="px-6 py-6 border-b border-white/10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-[8px] bg-white/20 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">A</span>
-            </div>
-            <div>
-              <p className="text-white font-bold text-sm leading-none">AEWA</p>
-              <p className="text-white/40 text-[10px]">Admin</p>
-            </div>
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/aewa-logo-light.png"
+              alt="AEWA"
+              className="h-8 w-auto object-contain"
+            />
+            <p className="text-white/40 text-[10px] font-medium tracking-wider uppercase">Admin</p>
           </div>
         </div>
 

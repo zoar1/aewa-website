@@ -6,7 +6,12 @@ import Section from "@/components/layout/Section";
 import { cta } from "@/content/home";
 import RotatingGlobe from "@/components/ui/RotatingGlobe";
 
-export default function CTASection() {
+interface CTASectionProps {
+    headline?: string;
+    subCopy?: string;
+}
+
+export default function CTASection({ headline, subCopy }: CTASectionProps = {}) {
     return (
         <Section className="bg-[#F7F7F6]">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-8">
@@ -21,8 +26,8 @@ export default function CTASection() {
                     <p className="text-sm font-semibold text-[#555555] uppercase tracking-widest">
                         Work With Us
                     </p>
-                    <h2 className="text-[#111111]">{cta.headline}</h2>
-                    <p className="text-body-lg text-[#555555]">{cta.subCopy}</p>
+                    <h2 className="text-[#111111]">{headline ?? cta.headline}</h2>
+                    <p className="text-body-lg text-[#555555]">{subCopy ?? cta.subCopy}</p>
                     <div className="flex flex-wrap items-center gap-4 pt-2">
                         <Link href={cta.primaryCta.href} className="btn-primary">
                             {cta.primaryCta.label}

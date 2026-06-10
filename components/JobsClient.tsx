@@ -107,7 +107,7 @@ function HighlightMatch({ text, query }: { text: string; query: string }) {
     );
 }
 
-const INITIAL_VISIBLE = 3;
+const INITIAL_VISIBLE = 6;
 
 export default function JobsClient({ jobs }: JobsClientProps) {
     const [filters, setFilters] = useState<Filters>({

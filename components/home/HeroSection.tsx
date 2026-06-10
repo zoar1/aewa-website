@@ -15,7 +15,12 @@ const fadeUp: Variants = {
     }),
 };
 
-export default function HeroSection() {
+interface HeroSectionProps {
+    headline?: string;
+    subCopy?: string;
+}
+
+export default function HeroSection({ headline, subCopy }: HeroSectionProps = {}) {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
@@ -87,7 +92,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     className="text-white max-w-[780px] mb-6"
                 >
-                    {hero.headline}
+                    {headline ?? hero.headline}
                 </motion.h1>
 
                 {/* Sub-copy */}
@@ -98,7 +103,7 @@ export default function HeroSection() {
                     variants={fadeUp}
                     className="text-body-lg text-white/70 max-w-[600px] mb-10"
                 >
-                    {hero.subCopy}
+                    {subCopy ?? hero.subCopy}
                 </motion.p>
 
                 {/* CTAs */}
