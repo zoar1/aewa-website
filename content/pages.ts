@@ -212,7 +212,7 @@ export const contact = {
         },
         {
             label: "Business Hours",
-            value: "24 Hours / At your service",
+            value: "Monday – Friday, 9:00 AM – 5:00 PM WAT",
             href: null,
             icon: "clock",
         },
