@@ -53,7 +53,7 @@ export default function ServicesPage() {
                             Technical Business Support
                         </h2>
                         <p className="text-[#555555] mb-10 leading-relaxed">
-                            Beyond our core service offerings, AEWA provides an integrated suite of technical business support capabilities — designed to complement client project organisations and deliver specialised solutions at every stage of project execution.
+                            Beyond our core service offerings, All Energy West Africa provides an integrated suite of technical business support capabilities — designed to complement client project organisations and deliver specialised solutions at every stage of project execution.
                         </p>
                     </div>
 

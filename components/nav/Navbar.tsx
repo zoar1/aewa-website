@@ -44,7 +44,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                 <nav className="flex items-center justify-between h-16 md:h-20">
                     {/* Logo — light version fades out, dark version fades in on scroll */}
                     <Link href="/" className="flex items-center group">
-                        <div className="relative h-9 flex items-center">
+                        <div className="relative h-[54px] flex items-center">
 
                             {/* LIGHT logo (visible at top, hidden when scrolled or solid) */}
                             {!lightError ? (
@@ -52,7 +52,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                                 <img
                                     src={LOGO_LIGHT}
                                     alt="AEWA"
-                                    className={`h-9 w-auto object-contain absolute inset-0 transition-opacity duration-300 ${isWhite ? "opacity-0 pointer-events-none" : "opacity-100"
+                                    className={`h-[54px] w-auto object-contain absolute inset-0 transition-opacity duration-300 ${isWhite ? "opacity-0 pointer-events-none" : "opacity-100"
                                         }`}
                                     onError={() => setLightError(true)}
                                 />
@@ -73,7 +73,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                                 <img
                                     src={LOGO_DARK}
                                     alt="AEWA"
-                                    className={`h-9 w-auto object-contain transition-opacity duration-300 ${isWhite ? "opacity-100" : "opacity-0 pointer-events-none"
+                                    className={`h-[54px] w-auto object-contain transition-opacity duration-300 ${isWhite ? "opacity-100" : "opacity-0 pointer-events-none"
                                         }`}
                                     onError={() => setDarkError(true)}
                                 />

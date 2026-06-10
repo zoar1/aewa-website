@@ -1,7 +1,7 @@
 export const hero = {
     headline: "Expert Workforce Solutions Across Africa's Energy Sector",
     subCopy:
-        "AEWA delivers flexible, customised, and cost-effective HR and recruitment services to candidates and companies across power, energy, ICT, and construction.",
+        "All Energy West Africa delivers flexible, customised, and cost-effective HR and recruitment services to candidates and companies across power, energy, ICT, and construction.",
     primaryCta: { label: "View Our Services", href: "#services" },
     secondaryCta: { label: "Learn About Us", href: "/about-us" },
 };
@@ -209,7 +209,7 @@ export const jobsTeaser = {
 export const cta = {
     headline: "Partner with Nigeria's Leading HR Specialists",
     subCopy:
-        "Let's discuss how AEWA can deliver the right people for your next project.",
+        "Let's discuss how All Energy West Africa can deliver the right people for your next project.",
     primaryCta: { label: "Contact Us Today", href: "/contact-us" },
     secondaryCta: { label: "Download Brochure", href: "https://aewanl.com/AEWA_Company_Profile.pdf" },
 };

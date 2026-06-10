@@ -19,7 +19,11 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/api/jobs)",
       "Bash(curl -s \"http://localhost:3000/api/jobs\")",
       "WebFetch(domain:jobs.aewanl.com)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(gh run *)",
+      "Bash(gh api *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(x['id'], x['environment'], x['created_at']\\) for x in d]\")",
+      "Bash(curl -sv \"https://eorkh6dh9m50sfq.m.pipedream.net\")"
     ]
   }
 }

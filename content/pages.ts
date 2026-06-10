@@ -3,9 +3,9 @@
 export const about = {
     headline: "We Are Specialists in Workforce Solutions",
     description:
-        "At AEWA, we specialise in delivering flexible, customised, and cost-effective HR and recruitment services to candidates and companies across a variety of industries. Our goal is to be the technical partner of choice to all our clients.",
+        "At All Energy West Africa, we specialise in delivering flexible, customised, and cost-effective HR and recruitment services to candidates and companies across a variety of industries. Our goal is to be the technical partner of choice to all our clients.",
     mission:
-        "Whether you are an organisation seeking qualified staff for your project or an experienced professional looking for the next career opportunity, AEWA is your dedicated consultant every step of the way. We are committed to inspiring positive change, driven by a passion for our work, delivering HR solutions and technical support grounded in integrity and efficiency.",
+        "Whether you are an organisation seeking qualified staff for your project or an experienced professional looking for the next career opportunity, All Energy West Africa is your dedicated consultant every step of the way. We are committed to inspiring positive change, driven by a passion for our work, delivering HR solutions and technical support grounded in integrity and efficiency.",
     vision: "To become the leader in HR services and provide quality support to the industry.",
     coreValues: [
         {
@@ -41,7 +41,7 @@ export const about = {
         name: "Davi Promau",
         url: "https://www.davi.com/int/en/",
         description:
-            "AEWA is the exclusive Nigerian agent for Davi Promau — the world's largest manufacturer of plate and angle rolls, made entirely in Italy. We support their commercial activities across the country.",
+            "All Energy West Africa is the exclusive Nigerian agent for Davi Promau — the world's largest manufacturer of plate and angle rolls, made entirely in Italy. We support their commercial activities across the country.",
     },
 };
 
@@ -200,19 +200,19 @@ export const contact = {
         },
         {
             label: "Email",
-            value: "info@aewanl.com",
-            href: "mailto:info@aewanl.com",
+            value: "enquiries@aewanl.com",
+            href: "mailto:enquiries@aewanl.com",
             icon: "mail",
         },
         {
             label: "Address",
-            value: "Lagos, Nigeria",
+            value: "Block 58 Plot 13B Hunponu-Wusu Road, Off Adewunmi Adebimpe Drive, Lekki. Lagos",
             href: null,
             icon: "map-pin",
         },
         {
             label: "Business Hours",
-            value: "Monday – Friday, 8:00 AM – 5:00 PM WAT",
+            value: "24 Hours / At your service",
             href: null,
             icon: "clock",
         },

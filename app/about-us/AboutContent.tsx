@@ -71,7 +71,7 @@ export default function AboutContent() {
                     className="mb-12 md:mb-16"
                 >
                     <p className="text-sm font-semibold text-[#555555] uppercase tracking-widest mb-4">What We Stand For</p>
-                    <h2 className="text-[#111111] max-w-[480px]">AEWA Core Values</h2>
+                    <h2 className="text-[#111111] max-w-[540px]">All Energy West Africa Core Values</h2>
                 </motion.div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -102,18 +102,18 @@ export default function AboutContent() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="bg-[#F7F7F6] rounded-[24px] border border-[#E5E5E5] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8"
+                    className="bg-[#003366] rounded-[24px] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8"
                 >
                     <div className="flex-1">
-                        <p className="text-sm font-semibold text-[#555555] uppercase tracking-widest mb-3">Strategic Partner</p>
-                        <h3 className="text-[#111111] text-2xl font-bold mb-3">{about.partner.name}</h3>
-                        <p className="text-[#555555] leading-relaxed max-w-[540px]">{about.partner.description}</p>
+                        <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-3">Strategic Partner</p>
+                        <h3 className="text-white text-2xl font-bold mb-3">{about.partner.name}</h3>
+                        <p className="text-white/80 leading-relaxed max-w-[540px]">{about.partner.description}</p>
                     </div>
                     <a
                         href={about.partner.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-secondary flex-shrink-0"
+                        className="btn-secondary flex-shrink-0 !border-white/30 !text-white hover:!bg-white/10"
                     >
                         Visit Partner Site ↗
                     </a>

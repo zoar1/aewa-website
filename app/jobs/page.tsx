@@ -6,13 +6,14 @@ import CTASection from "@/components/home/CTASection";
 import Footer from "@/components/footer/Footer";
 import { fetchJobs } from "@/lib/jobs";
 import JobsClient from "@/components/JobsClient";
+import CVSubmitSection from "@/components/jobs/CVSubmitSection";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
     title: "Current Opportunities | AEWA — All Energy West Africa",
     description:
-        "Explore current job openings at AEWA. We connect top engineering and energy sector talent with leading organisations across Nigeria and Africa.",
+        "Explore current job openings at All Energy West Africa. We connect top engineering and energy sector talent with leading organisations across Nigeria and Africa.",
 };
 
 export default async function JobsPage() {
@@ -33,6 +34,7 @@ export default async function JobsPage() {
                     <JobsClient jobs={jobs} />
                 </Section>
 
+                <CVSubmitSection />
                 <CTASection />
             </main>
             <Footer />

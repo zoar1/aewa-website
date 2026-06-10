@@ -13,7 +13,7 @@ export default function ClientsPage() {
                 <PageHero
                     eyebrow="Who Trusts Us"
                     title="Organisations We Have Worked With"
-                    description="Since 2011, AEWA has partnered with leading energy, industrial, and technology companies across Nigeria and West Africa."
+                    description="Since 2011, All Energy West Africa has partnered with leading energy, industrial, and technology companies across Nigeria and West Africa."
                     breadcrumbs={[{ label: "Clients", href: "/clients" }]}
                 />
                 <ClientsGrid />

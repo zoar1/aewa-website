@@ -17,25 +17,16 @@ function WhyCard({
     index,
     title,
     description,
-    progress,
 }: {
     index: number;
     title: string;
     description: string;
-    progress: any;
 }) {
-    // For the first card, we use the section's scroll progress to drive the reveal
-    const opacityTransform = useTransform(progress, [0, 0.08], [0, 1]);
-    const yTransform = useTransform(progress, [0, 0.08], [400, 0]);
-
-    const isFirst = index === 0;
-
     return (
         <motion.div
-            initial={isFirst ? undefined : { opacity: 0, y: 80 }}
-            whileInView={isFirst ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            style={isFirst ? { opacity: opacityTransform, y: yTransform } : {}}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-center px-4 md:px-8 lg:px-12 py-10 md:py-16"
         >
@@ -170,7 +161,7 @@ export default function WhyAEWASection() {
                                     maxWidth: "360px",
                                 }}
                             >
-                                Why Leading Organisations Choose AEWA
+                                Why Leading Organisations Choose All Energy West Africa
                             </motion.h2>
 
                             {/* Sub-text */}
@@ -255,8 +246,8 @@ export default function WhyAEWASection() {
                         </p>
                     </div>
 
-                    {/* First card top padding — starts near bottom of viewport to scroll up */}
-                    <div className="hidden lg:block h-[75vh]" />
+                    {/* First card top padding */}
+                    <div className="hidden lg:block h-[15vh]" />
 
                     {/* Cards — generous spacing for clarity and height */}
                     <div className="flex flex-col gap-12 md:gap-20">
@@ -266,7 +257,6 @@ export default function WhyAEWASection() {
                                 index={i}
                                 title={prop.title}
                                 description={prop.description}
-                                progress={scrollYProgress}
                             />
                         ))}
                     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, ReactElement } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ZohoJob } from "@/types/jobs";
@@ -19,35 +20,189 @@ function getJobTypeBadge(jobType: string) {
     return { label: "Contract", className: "bg-[#E5E5E5] text-[#555555]" };
 }
 
-/**
- * Convert a plain-text job description into paragraphs.
- * Splits on double newlines, then treats single newlines as line breaks.
- */
-function formatJobDescription(text: string) {
-    // Split on two or more newlines → separate paragraph blocks
-    const paragraphs = text
-        .split(/\n{2,}/)
-        .map((block) => block.trim())
-        .filter(Boolean);
+const SECTION_HEADING_RE = /^(requirements?|key responsibilities|responsibilities|qualifications?|skills?|experience|about the role|role overview|what you.ll do|what we.re looking for|benefits?|what we offer|duties|key duties|job summary|summary|overview|objectives?):?$/i;
+const NUMBERED_RE = /^\d+\.\s/;
+const BULLET_RE = /^[•\-\*]\s/;
 
-    return paragraphs.map((paragraph, idx) => {
-        // Within each block, split on single newlines → <br /> equivalent
-        const lines = paragraph.split(/\n/).filter(Boolean);
-        return (
-            <p key={idx} className="text-[#555555] text-[15px] leading-relaxed mb-4 last:mb-0">
-                {lines.map((line, lineIdx) => (
-                    <span key={lineIdx}>
-                        {line}
-                        {lineIdx < lines.length - 1 && <br />}
-                    </span>
-                ))}
+function formatJobDescription(text: string) {
+    const rawBlocks = text.split(/\n{2,}/).map((b) => b.trim()).filter(Boolean);
+
+    const elements: ReactElement[] = [];
+
+    rawBlocks.forEach((block, blockIdx) => {
+        const lines = block.split(/\n/).map((l) => l.trim()).filter(Boolean);
+
+        // Single-line block that looks like a heading
+        if (lines.length === 1 && SECTION_HEADING_RE.test(lines[0].replace(/:$/, ""))) {
+            elements.push(
+                <h4 key={`h-${blockIdx}`} className="text-[#111111] font-semibold text-base mt-6 mb-2 first:mt-0">
+                    {lines[0].replace(/:$/, "")}
+                </h4>
+            );
+            return;
+        }
+
+        // Detect if this block is a list (numbered or bulleted)
+        const isList = lines.every((l) => NUMBERED_RE.test(l) || BULLET_RE.test(l));
+        if (isList) {
+            elements.push(
+                <ul key={`ul-${blockIdx}`} className="list-none space-y-2 mb-4">
+                    {lines.map((line, li) => (
+                        <li key={li} className="flex items-start gap-2 text-[#555555] text-[15px] leading-relaxed">
+                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#003366] flex-shrink-0" />
+                            <span>{line.replace(NUMBERED_RE, "").replace(BULLET_RE, "")}</span>
+                        </li>
+                    ))}
+                </ul>
+            );
+            return;
+        }
+
+        // Mixed block — check each line individually
+        const hasListLines = lines.some((l) => NUMBERED_RE.test(l) || BULLET_RE.test(l));
+        if (hasListLines) {
+            lines.forEach((line, li) => {
+                if (SECTION_HEADING_RE.test(line.replace(/:$/, ""))) {
+                    elements.push(
+                        <h4 key={`h-${blockIdx}-${li}`} className="text-[#111111] font-semibold text-base mt-6 mb-2">
+                            {line.replace(/:$/, "")}
+                        </h4>
+                    );
+                } else if (NUMBERED_RE.test(line) || BULLET_RE.test(line)) {
+                    elements.push(
+                        <div key={`li-${blockIdx}-${li}`} className="flex items-start gap-2 text-[#555555] text-[15px] leading-relaxed mb-2">
+                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#003366] flex-shrink-0" />
+                            <span>{line.replace(NUMBERED_RE, "").replace(BULLET_RE, "")}</span>
+                        </div>
+                    );
+                } else {
+                    elements.push(
+                        <p key={`p-${blockIdx}-${li}`} className="text-[#555555] text-[15px] leading-relaxed mb-3">
+                            {line}
+                        </p>
+                    );
+                }
+            });
+            return;
+        }
+
+        // Plain paragraph — join all lines
+        elements.push(
+            <p key={`p-${blockIdx}`} className="text-[#555555] text-[15px] leading-relaxed mb-4 last:mb-0">
+                {lines.join(" ")}
             </p>
         );
     });
+
+    return elements;
+}
+
+function ApplyForm({ jobTitle, jobId }: { jobTitle: string; jobId: string }) {
+    const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+    const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+    const [errorMsg, setErrorMsg] = useState("");
+
+    function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+
+    async function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+        setStatus("submitting");
+        setErrorMsg("");
+        try {
+            const res = await fetch("/api/apply", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...form, jobTitle, jobId }),
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                setErrorMsg(data.error || "Something went wrong.");
+                setStatus("error");
+            } else {
+                setStatus("success");
+            }
+        } catch {
+            setErrorMsg("Network error. Please try again.");
+            setStatus("error");
+        }
+    }
+
+    if (status === "success") {
+        return (
+            <div className="bg-[#003366] rounded-[24px] p-7 text-white">
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-4">
+                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Application Sent!</h3>
+                <p className="text-white/70 text-sm leading-relaxed">
+                    Thank you, {form.name}. Our team will be in touch at {form.email}.
+                </p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="bg-[#003366] rounded-[24px] p-7 text-white">
+            <h3 className="font-semibold text-lg mb-1 text-white">Apply for this Role</h3>
+            <p className="text-white/60 text-sm mb-5 leading-relaxed">
+                Fill in your details and we'll be in touch.
+            </p>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name *"
+                    required
+                    value={form.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-white/60 transition-colors"
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address *"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-white/60 transition-colors"
+                />
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone (optional)"
+                    value={form.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-white/60 transition-colors"
+                />
+                <textarea
+                    name="message"
+                    placeholder="Cover note (optional)"
+                    rows={3}
+                    value={form.message}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 text-sm focus:outline-none focus:border-white/60 transition-colors resize-none"
+                />
+                {errorMsg && (
+                    <p className="text-red-300 text-xs">{errorMsg}</p>
+                )}
+                <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="inline-flex items-center justify-center w-full px-5 py-3 bg-white text-[#003366] text-sm font-semibold rounded-full hover:bg-[#F7F7F6] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed mt-1"
+                >
+                    {status === "submitting" ? "Sending…" : "Submit Application"}
+                </button>
+            </form>
+        </div>
+    );
 }
 
 export default function JobDetailContent({ job }: JobDetailContentProps) {
-    const badge = getJobTypeBadge(job.Job_Type);
+    const badge = getJobTypeBadge(job.Job_Type ?? "");
     const location = [job.City, job.State, job.Country].filter(Boolean).join(", ");
 
     return (
@@ -138,8 +293,10 @@ export default function JobDetailContent({ job }: JobDetailContentProps) {
                             <h2 className="text-lg font-semibold text-[#111111] mb-6 pb-4 border-b border-[#F0F0F0]">
                                 Role Overview
                             </h2>
-                            <div className="prose-custom">
-                                {formatJobDescription(job.Job_Description)}
+                            <div>
+                                {job.Job_Description
+                                    ? formatJobDescription(job.Job_Description)
+                                    : <p className="text-[#555555] text-sm">No description available.</p>}
                             </div>
                         </div>
                     </motion.div>
@@ -152,34 +309,11 @@ export default function JobDetailContent({ job }: JobDetailContentProps) {
                         className="lg:w-[300px] xl:w-[340px] shrink-0"
                     >
                         <div className="lg:sticky lg:top-28 flex flex-col gap-5">
-                            {/* Apply card */}
-                            <div className="bg-[#003366] rounded-[24px] p-7 text-white">
-                                <h3 className="font-semibold text-lg mb-2 text-white">
-                                    Interested in this role?
-                                </h3>
-                                <p className="text-white/70 text-sm mb-6 leading-relaxed">
-                                    Send your CV and a brief cover note to our recruitment team.
-                                </p>
-                                <a
-                                    href={`mailto:recruitment@aewanl.com?subject=Application: ${encodeURIComponent(job.Job_Opening_Name)}`}
-                                    className="inline-flex items-center justify-center w-full px-5 py-3 bg-white text-[#003366] text-sm font-semibold rounded-full hover:bg-[#F7F7F6] transition-colors duration-200"
-                                >
-                                    Apply Now
-                                    <svg
-                                        className="ml-2 w-4 h-4"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                                        />
-                                    </svg>
-                                </a>
-                            </div>
+                            {/* Apply form */}
+                            <ApplyForm
+                                jobTitle={job.Job_Opening_Name ?? ""}
+                                jobId={job.id}
+                            />
 
                             {/* Job details card */}
                             <div className="bg-white rounded-[24px] border border-[#E5E5E5] p-7 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
