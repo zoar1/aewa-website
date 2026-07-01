@@ -125,8 +125,23 @@ export default function WhyAEWASection({ eyebrow, heading, subtext, cards }: Why
     });
 
     return (
-        <section ref={sectionRef} style={{ background: "#00326a" }} className="relative">
-            <Container>
+        <section ref={sectionRef} style={{ background: "#00326a" }} className="relative overflow-hidden">
+            {/* Background video — grayscale, low opacity so the blue dominates.
+                Sticky + viewport-height keeps the video at a sane render size
+                instead of stretching across this section's full scroll height. */}
+            <div className="sticky top-0 h-screen w-full pointer-events-none" style={{ marginBottom: "-100vh" }}>
+                <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ filter: "grayscale(100%)", opacity: 0.2 }}
+                    src="/videos/Oil_and_gas_bg.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    aria-hidden="true"
+                />
+            </div>
+            <Container className="relative z-10">
                 <div className="flex flex-col lg:flex-row">
 
                 {/* ── LEFT — sticky heading ─────────────────── */}
