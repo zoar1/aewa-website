@@ -125,7 +125,7 @@ export default function WhyAEWASection({ eyebrow, heading, subtext, cards }: Why
     });
 
     return (
-        <section ref={sectionRef} style={{ background: "#00326a" }} className="relative overflow-hidden">
+        <section ref={sectionRef} style={{ background: "#00326a" }} className="relative">
             {/* Background video — grayscale, low opacity so the blue dominates.
                 Sticky + viewport-height keeps the video at a sane render size
                 instead of stretching across this section's full scroll height. */}
