@@ -125,7 +125,7 @@ export default function WhyAEWASection({ eyebrow, heading, subtext, cards }: Why
     });
 
     return (
-        <section ref={sectionRef} style={{ background: "#00326a" }} className="relative">
+        <section ref={sectionRef} style={{ background: "#00234a" }} className="relative">
             {/* Background video — grayscale, low opacity so the blue dominates.
                 inset-0 bounds it exactly to this section's own height, so it
                 never bleeds into the sections that follow. */}

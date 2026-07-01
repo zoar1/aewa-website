@@ -38,6 +38,7 @@ export default function ServicesPage() {
                                 href={`/services/${service.href.replace("/services/", "")}`}
                                 icon={service.icon}
                                 index={i}
+                                variant="blue"
                             />
                         ))}
                     </div>
