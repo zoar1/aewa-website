@@ -6,6 +6,7 @@ import {
   ScanSearch,
   Anchor,
   Briefcase,
+  Settings,
   // Contact icons
   Phone,
   Mail,
@@ -24,6 +25,7 @@ const ICON_MAP: Record<string, React.FC<LucideProps>> = {
   "scan-search": ScanSearch,
   anchor: Anchor,
   briefcase: Briefcase,
+  settings: Settings,
   // Contact
   phone: Phone,
   mail: Mail,

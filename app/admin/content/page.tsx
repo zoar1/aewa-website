@@ -40,6 +40,9 @@ const serviceSubtabs = (slug: string, label: string, sectionCount: number): Subt
     ...(sectionCount > 2
       ? [tx("section_2_title", "Section 3 Heading"), ta("section_2_body", "Section 3 Body")]
       : []),
+    ...(sectionCount > 3
+      ? [tx("section_3_title", "Section 4 Heading"), ta("section_3_body", "Section 4 Body")]
+      : []),
   ],
 });
 
@@ -153,10 +156,11 @@ const TABS: TabDef[] = [
     subtabs: [
       serviceSubtabs("technical-recruitment", "Technical Recruitment", 2),
       serviceSubtabs("skilled-trades", "Skilled Trades", 2),
-      serviceSubtabs("expatriate-support", "Expatriate Support", 3),
+      serviceSubtabs("expatriate-support", "Expatriate Support", 4),
       serviceSubtabs("qa-qc-inspection", "QA/QC Inspection", 3),
       serviceSubtabs("offshore-manning", "Offshore Manning", 2),
       serviceSubtabs("payroll-compliance", "Payroll & Compliance", 2),
+      serviceSubtabs("technical-business-support", "Technical Business Support", 2),
     ],
   },
   {

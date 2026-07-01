@@ -60,6 +60,13 @@ export const services = [
         href: "/services/payroll-compliance",
         icon: "briefcase",
     },
+    {
+        title: "Technical Business Support",
+        description:
+            "Beyond our core service offerings, AEWA provides an integrated suite of technical business support capabilities — designed to complement client project organizations and deliver specialized solutions at every stage of project execution.",
+        href: "/services/technical-business-support",
+        icon: "settings",
+    },
 ];
 
 export const servicesCarousel = [
@@ -126,10 +133,10 @@ export const servicesCarousel = [
         description:
             "We handle the full lifecycle of expatriate engagement in Nigeria — from work permits and visas to quotas, payroll, tax compliance, medicals, and repatriation.",
         bullets: [
-            "Work permits, visas & quotas",
-            "Payroll & tax compliance",
-            "Medicals & repatriation",
-            "End-to-end regulatory support",
+            "Pre-mobilization & compliance",
+            "Deployment & onboarding",
+            "Operations & statutory compliance",
+            "Demobilization & repatriation",
         ],
         imageSrc: "/images/services/recruitment.jpg",
     },
@@ -146,6 +153,20 @@ export const servicesCarousel = [
             "Full regulatory reporting",
         ],
         imageSrc: "/images/services/global-hr.jpg",
+    },
+    {
+        id: "technical-business-support",
+        tag: "Service",
+        title: "Technical Business Support",
+        description:
+            "Beyond our core service offerings, AEWA provides an integrated suite of technical business support capabilities — designed to complement client project organizations and deliver specialized solutions at every stage of project execution.",
+        bullets: [
+            "Delivery of specialized technical solutions on engineering, subsurface, drilling, construction installation, pre-commissioning and hook-up studies and project management",
+            "Delivery of a dedicated Team to Client project organization for subsurface, drilling, construction installation, pre-commissioning and hook-up phases",
+            "Delivery of Specialized Dedicated Technicians covering all range of project delivery",
+            "Complement and enhance Client Organogram during crucial project phases",
+        ],
+        imageSrc: "/images/services/recruitment.jpg",
     },
 ];
 
@@ -165,7 +186,7 @@ export const valueProps = [
     {
         title: "Extended Reach",
         description:
-            "With a broad network across West Africa, we connect the right talent with the right organisations at scale.",
+            "With a broad network across West Africa (Nigeria), we connect the right talent with the right organisations at scale.",
     },
     {
         title: "Full Compliance",
@@ -175,7 +196,7 @@ export const valueProps = [
     {
         title: "Nigerian-Owned",
         description:
-            "Proudly Nigerian since 2011, with an intimate understanding of the local business environment and culture.",
+            "Is a fully owned Nigerian company since 2011, with an intimate understanding of the local business environment and culture.",
     },
     {
         title: "12+ Years of Expertise",
@@ -185,10 +206,10 @@ export const valueProps = [
 ];
 
 export const stats = [
-    { value: "12+", label: "Years of Experience" },
-    { value: "100%", label: "Client Satisfaction" },
-    { value: "230", label: "Active Consultants" },
-    { value: "1,250+", label: "Projects Completed" },
+    { value: "35+", label: "Years of Experience" },
+    { value: "99%", label: "Client Satisfaction" },
+    { value: "640", label: "Active Consultants" },
+    { value: "100s", label: "Projects Completed" },
 ];
 
 export const testimonial = {

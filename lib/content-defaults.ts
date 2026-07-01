@@ -99,6 +99,7 @@ export const DEFAULTS: Record<string, ContentMap> = {
   "service-qa-qc-inspection": buildServiceDefaults("qa-qc-inspection"),
   "service-offshore-manning": buildServiceDefaults("offshore-manning"),
   "service-payroll-compliance": buildServiceDefaults("payroll-compliance"),
+  "service-technical-business-support": buildServiceDefaults("technical-business-support"),
 };
 
 export function get(map: ContentMap, key: string, fallback: string): string {

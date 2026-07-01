@@ -144,6 +144,7 @@ export default function ContactForm() {
                                     <option>QA/QC & Technical Inspection Services</option>
                                     <option>Offshore Crew & Manning Services</option>
                                     <option>Payroll & Compliance Management</option>
+                                    <option>Technical Solutions: Integrated engineering, drilling, construction, commissioning, and project management services.</option>
                                     <option>Other</option>
                                 </select>
                             </div>

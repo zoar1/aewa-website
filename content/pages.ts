@@ -3,7 +3,7 @@
 export const about = {
     headline: "We Are Specialists in Workforce Solutions",
     description:
-        "At All Energy West Africa, we specialise in delivering flexible, customised, and cost-effective HR and recruitment services to candidates and companies across a variety of industries. Our goal is to be the technical partner of choice to all our clients.",
+        "At All Energy West Africa, we specialise in delivering flexible, customised, and cost-effective HR and Technical support service to companies across a variety of industries. Our goal is to be the technical partner of choice to the Nigerian industry and all our clients.",
     mission:
         "Whether you are an organisation seeking qualified staff for your project or an experienced professional looking for the next career opportunity, All Energy West Africa is your dedicated consultant every step of the way. We are committed to inspiring positive change, driven by a passion for our work, delivering HR solutions and technical support grounded in integrity and efficiency.",
     vision: "To become the leader in HR services and provide quality support to the industry.",
@@ -106,15 +106,19 @@ export const serviceDetails: Record<
         imageSrc: "/images/hero/Compliance.jpg",
         sections: [
             {
-                title: "Work Permits, Visas & Quotas",
-                body: "We manage all Nigerian immigration requirements for expatriate staff, including Temporary Work Permits (TWP), Combined Expatriate Residence Permits and Aliens Cards (CERPAC), and Expatriate Quota applications — handling documentation, renewals, and compliance end-to-end.",
+                title: "Pre-Mobilization & Compliance",
+                body: "We manage all Nigerian immigration requirements for expatriate personnel, including Temporary Work Permits (TWP), Expatriate Quota, NCDMB Work Permit, Combined Expatriate Residence Permits and Aliens Cards (CERPAC), handling documentation, renewals and compliance end-to-end. We seamlessly navigate local content laws and immigration frameworks to guarantee a fully compliant foundation before deployment.",
             },
             {
-                title: "Payroll, Tax & Medicals",
-                body: "Our team handles expatriate payroll processing, Nigeria tax compliance, and mandatory pre-assignment medicals. We ensure every aspect of the engagement is fully compliant with local regulations so your expatriates can focus on the work.",
+                title: "Deployment & Onboarding",
+                body: "We manage comprehensive fitness for duty Medicals, activate global Medical & Life Insurance through our international partner, April International Insurance, and support key mobilization processes to ensure smooth deployment.",
             },
             {
-                title: "Repatriation & Offboarding",
+                title: "Operations & Statutory Compliance",
+                body: "We administer multi-currency Payroll processing alongside rigorous Tax Compliance, ensuring accurate local PAYE remittances and statutory deductions every month. We ensure every aspect of the engagement is fully compliant with local regulations so your expatriates can focus on the work.",
+            },
+            {
+                title: "Demobilization & Repatriation",
                 body: "When assignments end, we manage the complete repatriation process — permit cancellations, final settlements, and all administrative requirements — ensuring a smooth and compliant conclusion to every expatriate engagement.",
             },
         ],
@@ -181,6 +185,25 @@ export const serviceDetails: Record<
         ],
         relatedSlugs: ["technical-recruitment", "expatriate-support"],
     },
+    "technical-business-support": {
+        slug: "technical-business-support",
+        title: "Technical Business Support",
+        icon: "settings",
+        description:
+            "Beyond our core service offerings, AEWA provides an integrated suite of technical business support capabilities — designed to complement client project organizations and deliver specialized solutions at every stage of project execution.",
+        imageSrc: "/images/hero/Technical-Recruitment.jpg",
+        sections: [
+            {
+                title: "Technical Business Support",
+                body: "Beyond our core service offerings, AEWA provides an integrated suite of technical business support capabilities — designed to complement client project organizations and deliver specialized solutions at every stage of project execution.",
+            },
+            {
+                title: "Support Capabilities",
+                body: "Delivery of specialized technical solutions on engineering, subsurface, drilling, construction installation, pre-commissioning and hook-up studies and project management; delivery of a dedicated Team to Client project organization for subsurface, drilling, construction installation, pre-commissioning and hook-up phases; delivery of Specialized Dedicated Technicians covering all range of project delivery; complement and enhance Client Organogram during crucial project phases; proposing door-to-door solutions for specialized equipment to be integrated with client existing facilities; one stop-shop for enabling a fast and professional approach to your project demands.",
+            },
+        ],
+        relatedSlugs: ["technical-recruitment", "payroll-compliance"],
+    },
 };
 
 export const allServiceSlugs = Object.keys(serviceDetails);
@@ -194,7 +217,7 @@ export const contact = {
     details: [
         {
             label: "Phone",
-            value: "+234 706 201 6100",
+            value: "+234 706 201 6100, +234 805 937 9113",
             href: "tel:+2347062016100",
             icon: "phone",
         },
@@ -206,7 +229,7 @@ export const contact = {
         },
         {
             label: "Address",
-            value: "Block 58 Plot 13B Hunponu-Wusu Road, Off Adewunmi Adebimpe Drive, Lekki. Lagos",
+            value: "Lagos, Nigeria – Plot 13 Block 58 Hunponu-Wusu Road, Off Adewunmi Adebimpe Drive, Phase 1, Lekki.",
             href: null,
             icon: "map-pin",
         },

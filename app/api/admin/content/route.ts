@@ -13,6 +13,7 @@ const SECTION_PATHS: Record<string, string[]> = {
   "service-qa-qc-inspection": ["/services/qa-qc-inspection"],
   "service-offshore-manning": ["/services/offshore-manning"],
   "service-payroll-compliance": ["/services/payroll-compliance"],
+  "service-technical-business-support": ["/services/technical-business-support"],
 };
 
 export async function GET(req: NextRequest) {
