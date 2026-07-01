@@ -90,9 +90,9 @@ export default function TestimonialCarousel() {
     };
 
     return (
-        <section className="bg-white py-16 md:py-20">
+        <section className="bg-[#003366] py-16 md:py-20">
             <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-                <p className="text-sm font-semibold text-[#555555] uppercase tracking-widest mb-10">
+                <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-10">
                     Client Testimonials
                 </p>
 
@@ -107,17 +107,17 @@ export default function TestimonialCarousel() {
                             exit="exit"
                             transition={{ duration: 0.45, ease: "easeOut" }}
                         >
-                            <blockquote className="text-[#111111] text-2xl md:text-3xl font-semibold leading-[1.4] mb-10 max-w-[760px]">
+                            <blockquote className="text-white text-2xl md:text-3xl font-semibold leading-[1.4] mb-10 max-w-[760px]">
                                 &ldquo;{current.quote}&rdquo;
                             </blockquote>
 
                             <div className="flex items-center gap-4">
-                                <div className="w-11 h-11 rounded-full bg-[#003366]/10 border border-[#003366]/20 flex items-center justify-center text-[#003366] font-bold text-sm">
+                                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white font-bold text-sm">
                                     {current.author.charAt(0)}
                                 </div>
                                 <div>
-                                    <p className="text-[#111111] font-semibold text-sm">{current.author}</p>
-                                    <p className="text-[#555555] text-sm">{current.role}</p>
+                                    <p className="text-white font-semibold text-sm">{current.author}</p>
+                                    <p className="text-white/60 text-sm">{current.role}</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -132,8 +132,8 @@ export default function TestimonialCarousel() {
                             onClick={() => goTo(i)}
                             aria-label={`Go to testimonial ${i + 1}`}
                             className={`h-2 rounded-full transition-all duration-300 ${i === index
-                                ? "w-6 bg-[#003366]"
-                                : "w-2 bg-[#E5E5E5] hover:bg-[#AAAAAA]"
+                                ? "w-6 bg-white"
+                                : "w-2 bg-white/25 hover:bg-white/40"
                                 }`}
                         />
                     ))}

@@ -121,7 +121,7 @@ export default function ClientsGrid() {
       .from("client_logos")
       .select("id, name, file_url, active")
       .eq("active", true)
-      .order("name", { ascending: true })
+      .order("display_order", { ascending: true })
       .then(({ data }) => {
         if (data && data.length > 0) setLogos(data);
         setLoaded(true);
