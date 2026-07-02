@@ -2,7 +2,7 @@ export const hero = {
     headline: "Expert Workforce Solutions Across Africa's Energy Sector",
     subCopy:
         "All Energy West Africa delivers flexible, customised, and cost-effective HR and recruitment services to candidates and companies across power, energy, ICT, and construction.",
-    primaryCta: { label: "View Our Services", href: "/services/technical-recruitment" },
+    primaryCta: { label: "View Our Services", href: "/services" },
     secondaryCta: { label: "Learn About Us", href: "/about-us" },
 };
 
