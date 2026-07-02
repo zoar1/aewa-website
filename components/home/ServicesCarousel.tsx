@@ -43,18 +43,18 @@ export default function ServicesCarousel({ items }: Props) {
     };
 
     return (
-        <section className="bg-white">
+        <section className="bg-white overflow-x-hidden">
             {/* HEADER */}
             <div className="border-b border-black/10">
-                <div className="mx-auto max-w-[1280px] px-6 py-10 flex items-center justify-between">
-                    <h2 className="text-4xl md:text-5xl font-bold text-brand-blue">
+                <div className="mx-auto max-w-[1280px] px-6 py-8 sm:py-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-blue">
                         Services
                     </h2>
 
-                    <div className="flex items-center gap-6">
+                    <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                         {/* Number + Progress */}
                         <div className="flex items-end gap-3">
-                            <span className="text-5xl font-bold text-brand-blue leading-none">
+                            <span className="text-4xl sm:text-5xl font-bold text-brand-blue leading-none">
                                 {String(index + 1).padStart(2, "0")}
                             </span>
 
@@ -63,7 +63,7 @@ export default function ServicesCarousel({ items }: Props) {
                                     /{String(total).padStart(2, "0")}
                                 </span>
 
-                                <div className="h-[3px] w-[140px] bg-brand-border rounded-full overflow-hidden">
+                                <div className="h-[3px] w-[100px] sm:w-[140px] bg-brand-border rounded-full overflow-hidden">
                                     <div
                                         className="h-full bg-brand-yellow rounded-full"
                                         style={{ width: `${progress}%` }}
@@ -73,7 +73,7 @@ export default function ServicesCarousel({ items }: Props) {
                         </div>
 
                         {/* Arrows + hint */}
-                        <div className="flex flex-col items-end gap-2">
+                        <div className="flex flex-col items-start sm:items-end gap-2">
                             <div className="flex gap-3">
                                 <button
                                     type="button"

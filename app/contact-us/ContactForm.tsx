@@ -6,7 +6,18 @@ import Section from "@/components/layout/Section";
 import { contact } from "@/content/pages";
 import ServiceIcon from "@/components/shared/ServiceIcon";
 
-export default function ContactForm() {
+interface ContactDetail {
+    label: string;
+    value: string;
+    href: string | null;
+    icon: string;
+}
+
+interface ContactFormProps {
+    details?: ContactDetail[];
+}
+
+export default function ContactForm({ details = contact.details }: ContactFormProps) {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -33,7 +44,7 @@ export default function ContactForm() {
                     </div>
 
                     <div className="flex flex-col gap-4 mt-2">
-                        {contact.details.map((item) => (
+                        {details.map((item) => (
                             <motion.div
                                 key={item.label}
                                 initial={{ opacity: 0, x: -12 }}

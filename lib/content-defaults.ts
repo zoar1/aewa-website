@@ -75,11 +75,19 @@ export const DEFAULTS: Record<string, ContentMap> = {
     ),
     partner_name: about.partner.name,
     partner_description: about.partner.description,
+    partner2_name: about.partner2.name,
+    partner2_description: about.partner2.description,
   },
 
   contact: {
     headline: contact.headline,
     description: contact.description,
+    ...Object.fromEntries(
+      contact.details.map((item) => [
+        `${item.label.toLowerCase().replace(/\s+/g, "_")}_value`,
+        item.value,
+      ])
+    ),
   },
 
   global: {

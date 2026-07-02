@@ -93,6 +93,8 @@ export default async function HomePage() {
             <StrategicPartnerSection
               partnerName={get(aboutContent, "partner_name", aboutDefaults.partner_name)}
               partnerDescription={get(aboutContent, "partner_description", aboutDefaults.partner_description)}
+              partner2Name={get(aboutContent, "partner2_name", aboutDefaults.partner2_name)}
+              partner2Description={get(aboutContent, "partner2_description", aboutDefaults.partner2_description)}
             />
           </div>
         </div>

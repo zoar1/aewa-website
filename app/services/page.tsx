@@ -30,6 +30,7 @@ export default function ServicesPage() {
                                 icon={service.icon}
                                 index={i}
                                 variant="blue"
+                                featured={i === 0}
                             />
                         ))}
                     </div>

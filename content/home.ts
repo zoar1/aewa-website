@@ -99,6 +99,20 @@ export const servicesCarousel = [
         imageSrc: "/images/services/global-hr.jpg",
     },
     {
+        id: "expatriate-support",
+        tag: "Service",
+        title: "Expatriate Work Permit & Administrative Support",
+        description:
+            "We handle the full lifecycle of expatriate engagement in Nigeria — from work permits and visas to quotas, payroll, tax compliance, medicals, and repatriation.",
+        bullets: [
+            "Pre-mobilization & compliance",
+            "Deployment & onboarding",
+            "Operations & statutory compliance",
+            "Demobilization & repatriation",
+        ],
+        imageSrc: "/images/services/recruitment.jpg",
+    },
+    {
         id: "qa-qc-inspection",
         tag: "Service",
         title: "QA/QC & Technical Inspection Services",
@@ -125,20 +139,6 @@ export const servicesCarousel = [
             "Precision & discretion guaranteed",
         ],
         imageSrc: "/images/services/local-representation.jpg",
-    },
-    {
-        id: "expatriate-support",
-        tag: "Service",
-        title: "Expatriate Work Permit & Administrative Support",
-        description:
-            "We handle the full lifecycle of expatriate engagement in Nigeria — from work permits and visas to quotas, payroll, tax compliance, medicals, and repatriation.",
-        bullets: [
-            "Pre-mobilization & compliance",
-            "Deployment & onboarding",
-            "Operations & statutory compliance",
-            "Demobilization & repatriation",
-        ],
-        imageSrc: "/images/services/recruitment.jpg",
     },
     {
         id: "payroll-compliance",
@@ -209,7 +209,7 @@ export const stats = [
     { value: "35+", label: "Years of Experience" },
     { value: "99%", label: "Client Satisfaction" },
     { value: "640", label: "Active Consultants" },
-    { value: "100s", label: "Projects Completed" },
+    { value: "100+", label: "Projects Completed" },
 ];
 
 export const testimonial = {

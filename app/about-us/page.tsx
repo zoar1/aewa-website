@@ -27,6 +27,8 @@ export default async function AboutPage() {
                     vision={get(content, "vision", d.vision)}
                     partnerName={get(content, "partner_name", d.partner_name)}
                     partnerDescription={get(content, "partner_description", d.partner_description)}
+                    partner2Name={get(content, "partner2_name", d.partner2_name)}
+                    partner2Description={get(content, "partner2_description", d.partner2_description)}
                 />
                 <CTASection />
             </main>

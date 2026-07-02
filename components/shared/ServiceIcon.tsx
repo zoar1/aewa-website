@@ -9,6 +9,7 @@ import {
   Settings,
   // Contact icons
   Phone,
+  Smartphone,
   Mail,
   MapPin,
   Clock,
@@ -28,6 +29,7 @@ const ICON_MAP: Record<string, React.FC<LucideProps>> = {
   settings: Settings,
   // Contact
   phone: Phone,
+  smartphone: Smartphone,
   mail: Mail,
   "map-pin": MapPin,
   clock: Clock,

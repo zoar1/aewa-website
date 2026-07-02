@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Section from "@/components/layout/Section";
 import { about } from "@/content/pages";
@@ -13,14 +14,29 @@ const fadeUp: Variants = {
     }),
 };
 
+function PartnerLogo({ src, alt }: { src?: string; alt: string }) {
+    const [imgError, setImgError] = useState(false);
+
+    if (!src || imgError) {
+        return <span className="text-white font-bold text-lg text-center leading-tight">{alt}</span>;
+    }
+
+    return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt={alt} className="max-h-14 w-auto object-contain" onError={() => setImgError(true)} />
+    );
+}
+
 interface AboutContentProps {
     mission?: string;
     vision?: string;
     partnerName?: string;
     partnerDescription?: string;
+    partner2Name?: string;
+    partner2Description?: string;
 }
 
-export default function AboutContent({ mission, vision, partnerName, partnerDescription }: AboutContentProps = {}) {
+export default function AboutContent({ mission, vision, partnerName, partnerDescription, partner2Name, partner2Description }: AboutContentProps = {}) {
     return (
         <>
             {/* Mission & Vision */}
@@ -102,38 +118,48 @@ export default function AboutContent({ mission, vision, partnerName, partnerDesc
                 </div>
             </Section>
 
-            {/* Partner */}
+            {/* Strategic Partners */}
             <Section className="bg-white">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="bg-[#003366] rounded-[24px] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12"
+                    className="bg-[#003366] rounded-[24px] p-8 md:p-12 flex flex-col gap-8"
                 >
-                    {/* Logo */}
-                    <div className="shrink-0 flex items-center justify-center w-32 h-16">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                            src="/images/partners/davi-logo.png"
-                            alt="Davi Promau"
-                            className="max-h-14 w-auto object-contain"
-                        />
+                    <p className="text-sm font-semibold text-white/60 uppercase tracking-widest">Strategic Partners</p>
+
+                    {/* Partner 1 — Davi Promau */}
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 pb-8 border-b border-white/10">
+                        <div className="shrink-0 flex items-center justify-center w-32 h-16">
+                            <PartnerLogo src="/images/partners/davi-logo.png" alt="Davi Promau" />
+                        </div>
+
+                        <div className="flex-1 min-w-0">
+                            <h3 className="text-white text-2xl font-bold mb-3">{partnerName ?? about.partner.name}</h3>
+                            <p className="text-white/80 leading-relaxed max-w-[540px]">{partnerDescription ?? about.partner.description}</p>
+                        </div>
+                        <a
+                            href={about.partner.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-secondary flex-shrink-0 !border-white/30 !text-white hover:!bg-white/10"
+                        >
+                            Visit Partner Site ↗
+                        </a>
                     </div>
 
-                    <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-3">Strategic Partner</p>
-                        <h3 className="text-white text-2xl font-bold mb-3">{partnerName ?? about.partner.name}</h3>
-                        <p className="text-white/80 leading-relaxed max-w-[540px]">{partnerDescription ?? about.partner.description}</p>
+                    {/* Partner 2 — RFL Resources */}
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
+                        <div className="shrink-0 flex items-center justify-center w-32 h-16">
+                            <PartnerLogo src="/images/partners/rfl-logo.png" alt={partner2Name ?? about.partner2.name} />
+                        </div>
+
+                        <div className="flex-1 min-w-0">
+                            <h3 className="text-white text-2xl font-bold mb-3">{partner2Name ?? about.partner2.name}</h3>
+                            <p className="text-white/80 leading-relaxed max-w-[540px]">{partner2Description ?? about.partner2.description}</p>
+                        </div>
                     </div>
-                    <a
-                        href={about.partner.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary flex-shrink-0 !border-white/30 !text-white hover:!bg-white/10"
-                    >
-                        Visit Partner Site ↗
-                    </a>
                 </motion.div>
             </Section>
         </>

@@ -43,6 +43,11 @@ export const about = {
         description:
             "All Energy West Africa is the exclusive Nigerian agent for Davi Promau — the world's largest manufacturer of plate and angle rolls, made entirely in Italy. We support their commercial activities across the country.",
     },
+    partner2: {
+        name: "RFL Resources Limited",
+        description:
+            "All Energy West Africa partners with RFL Resources Limited, a Lagos-based workforce solutions and procurement company supporting energy, engineering, and industrial operations across the region. Together, we deliver pre-screened personnel and rapid, fully compliant workforce deployment for Oil & Gas and EPC projects.",
+    },
 };
 
 // ─── Service Detail Pages ───────────────────────────────────────────────────
@@ -216,10 +221,16 @@ export const contact = {
         "For enquiries about our services, recruitment, or partnerships, fill out the form and we will get back to you as soon as possible.",
     details: [
         {
-            label: "Phone",
-            value: "+234 706 201 6100, +234 805 937 9113",
+            label: "Telephone",
+            value: "+234 706 201 6100",
             href: "tel:+2347062016100",
             icon: "phone",
+        },
+        {
+            label: "Mobile Numbers",
+            value: "+234 805 937 9113, +234 803 528 2100",
+            href: "tel:+2348059379113",
+            icon: "smartphone",
         },
         {
             label: "Email",

@@ -68,7 +68,7 @@ const TABS: TabDef[] = [
         id: "services",
         label: "Services Carousel",
         section: "homepage",
-        fields: [0, 1, 2, 3, 4, 5].flatMap((i) => [
+        fields: [0, 1, 2, 3, 4, 5, 6].flatMap((i) => [
           tx(`services_card_${i}_title`, `Service ${i + 1} Title`),
           ta(`services_card_${i}_description`, `Service ${i + 1} Description`),
         ]),
@@ -144,11 +144,13 @@ const TABS: TabDef[] = [
       },
       {
         id: "partner",
-        label: "Strategic Partner",
+        label: "Strategic Partners",
         section: "about",
         fields: [
-          tx("partner_name", "Partner Name"),
-          ta("partner_description", "Partner Description"),
+          tx("partner_name", "Partner 1 Name"),
+          ta("partner_description", "Partner 1 Description"),
+          tx("partner2_name", "Partner 2 Name"),
+          ta("partner2_description", "Partner 2 Description"),
         ],
       },
     ],
@@ -191,12 +193,13 @@ const TABS: TabDef[] = [
       {
         id: "contactdetails",
         label: "Contact Details",
-        section: "global",
+        section: "contact",
         fields: [
-          tx("phone", "Phone Number"),
-          tx("email", "Email Address"),
-          ta("address", "Address"),
-          tx("hours", "Business Hours"),
+          tx("telephone_value", "Telephone"),
+          tx("mobile_numbers_value", "Mobile Numbers"),
+          tx("email_value", "Email Address"),
+          ta("address_value", "Address"),
+          tx("business_hours_value", "Business Hours"),
         ],
       },
       {
