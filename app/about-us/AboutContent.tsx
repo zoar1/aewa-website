@@ -16,10 +16,11 @@ const fadeUp: Variants = {
 interface AboutContentProps {
     mission?: string;
     vision?: string;
+    partnerName?: string;
     partnerDescription?: string;
 }
 
-export default function AboutContent({ mission, vision, partnerDescription }: AboutContentProps = {}) {
+export default function AboutContent({ mission, vision, partnerName, partnerDescription }: AboutContentProps = {}) {
     return (
         <>
             {/* Mission & Vision */}
@@ -122,7 +123,7 @@ export default function AboutContent({ mission, vision, partnerDescription }: Ab
 
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold text-white/60 uppercase tracking-widest mb-3">Strategic Partner</p>
-                        <h3 className="text-white text-2xl font-bold mb-3">{about.partner.name}</h3>
+                        <h3 className="text-white text-2xl font-bold mb-3">{partnerName ?? about.partner.name}</h3>
                         <p className="text-white/80 leading-relaxed max-w-[540px]">{partnerDescription ?? about.partner.description}</p>
                     </div>
                     <a

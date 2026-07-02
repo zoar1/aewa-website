@@ -25,6 +25,7 @@ export default async function AboutPage() {
                 <AboutContent
                     mission={get(content, "mission", d.mission)}
                     vision={get(content, "vision", d.vision)}
+                    partnerName={get(content, "partner_name", d.partner_name)}
                     partnerDescription={get(content, "partner_description", d.partner_description)}
                 />
                 <CTASection />

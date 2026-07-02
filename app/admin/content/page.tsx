@@ -144,9 +144,12 @@ const TABS: TabDef[] = [
       },
       {
         id: "partner",
-        label: "Partner",
+        label: "Strategic Partner",
         section: "about",
-        fields: [ta("partner_description", "Davi Promau Description")],
+        fields: [
+          tx("partner_name", "Partner Name"),
+          ta("partner_description", "Partner Description"),
+        ],
       },
     ],
   },

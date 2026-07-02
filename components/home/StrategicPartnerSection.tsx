@@ -3,7 +3,12 @@
 import { motion } from "framer-motion";
 import { about } from "@/content/pages";
 
-export default function StrategicPartnerSection() {
+interface StrategicPartnerSectionProps {
+  partnerName?: string;
+  partnerDescription?: string;
+}
+
+export default function StrategicPartnerSection({ partnerName, partnerDescription }: StrategicPartnerSectionProps = {}) {
   return (
     <section className="bg-[#F7F7F6] py-12 md:py-16 lg:py-24">
       <div className="mx-auto w-full max-w-[1280px] px-5 md:px-8">
@@ -30,10 +35,10 @@ export default function StrategicPartnerSection() {
               Strategic Partner
             </p>
             <h3 className="text-white text-2xl font-bold mb-3">
-              {about.partner.name}
+              {partnerName ?? about.partner.name}
             </h3>
             <p className="text-white/80 leading-relaxed max-w-[540px]">
-              {about.partner.description}
+              {partnerDescription ?? about.partner.description}
             </p>
           </div>
 

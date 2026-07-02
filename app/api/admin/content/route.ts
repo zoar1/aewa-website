@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 
 const SECTION_PATHS: Record<string, string[]> = {
   homepage: ["/"],
-  about: ["/about-us"],
+  about: ["/about-us", "/"],
   contact: ["/contact-us"],
   global: ["/", "/about-us", "/contact-us", "/jobs"],
   "service-technical-recruitment": ["/services/technical-recruitment"],

@@ -18,6 +18,10 @@ export default async function HomePage() {
   const content = await getSectionContent("homepage");
   const d = DEFAULTS.homepage;
 
+  // Strategic Partner content is shared with the About page, stored under "about"
+  const aboutContent = await getSectionContent("about");
+  const aboutDefaults = DEFAULTS.about;
+
   // Build dynamic services carousel items
   const dynamicServices = servicesCarousel.map((s, i) => ({
     ...s,
@@ -86,7 +90,10 @@ export default async function HomePage() {
             </div>
 
             {/* Strategic partner — sits directly above the footer */}
-            <StrategicPartnerSection />
+            <StrategicPartnerSection
+              partnerName={get(aboutContent, "partner_name", aboutDefaults.partner_name)}
+              partnerDescription={get(aboutContent, "partner_description", aboutDefaults.partner_description)}
+            />
           </div>
         </div>
       </main>

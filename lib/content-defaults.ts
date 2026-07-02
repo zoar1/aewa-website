@@ -73,6 +73,7 @@ export const DEFAULTS: Record<string, ContentMap> = {
         [`core_value_${i}_description`, v.description],
       ])
     ),
+    partner_name: about.partner.name,
     partner_description: about.partner.description,
   },
 
