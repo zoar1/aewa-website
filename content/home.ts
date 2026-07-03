@@ -186,7 +186,7 @@ export const valueProps = [
     {
         title: "Extended Reach",
         description:
-            "With a broad network across West Africa (Nigeria), we connect the right talent with the right organisations at scale.",
+            "With a broad network across (Nigeria), we connect the right talent with the right organisations at scale.",
     },
     {
         title: "Full Compliance",

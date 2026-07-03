@@ -51,14 +51,14 @@ export default function ServicesCarousel({ items }: Props) {
                         Services
                     </h2>
 
-                    <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 w-full sm:w-auto">
                         {/* Number + Progress */}
                         <div className="flex items-end gap-3">
                             <span className="text-4xl sm:text-5xl font-bold text-brand-blue leading-none">
                                 {String(index + 1).padStart(2, "0")}
                             </span>
 
-                            <div className="flex flex-col gap-2 pb-1">
+                            <div className="flex flex-col gap-2 pb-1 min-w-0">
                                 <span className="text-sm text-brand-muted">
                                     /{String(total).padStart(2, "0")}
                                 </span>
@@ -74,12 +74,12 @@ export default function ServicesCarousel({ items }: Props) {
 
                         {/* Arrows + hint */}
                         <div className="flex flex-col items-start sm:items-end gap-2">
-                            <div className="flex gap-3">
+                            <div className="flex gap-3 shrink-0">
                                 <button
                                     type="button"
                                     onClick={() => changeSlide(-1)}
                                     aria-label="Previous service"
-                                    className="h-10 w-10 rounded-full bg-brand-blue hover:bg-[#001f3f] transition grid place-items-center"
+                                    className="h-10 w-10 shrink-0 rounded-full bg-brand-blue hover:bg-[#001f3f] transition grid place-items-center"
                                 >
                                     <span className="text-white text-base leading-none">←</span>
                                 </button>
@@ -88,12 +88,14 @@ export default function ServicesCarousel({ items }: Props) {
                                     type="button"
                                     onClick={() => changeSlide(1)}
                                     aria-label="Next service"
-                                    className="h-10 w-10 rounded-full bg-brand-blue hover:bg-[#001f3f] transition grid place-items-center"
+                                    className="h-10 w-10 shrink-0 rounded-full bg-brand-blue hover:bg-[#001f3f] transition grid place-items-center"
                                 >
                                     <span className="text-white text-base leading-none">→</span>
                                 </button>
                             </div>
-                            <span className="text-xs text-brand-muted">Use arrows to explore services</span>
+                            <span className="text-xs text-brand-muted max-w-[160px] text-left sm:text-right">
+                                Use arrows to explore services
+                            </span>
                         </div>
                     </div>
                 </div>
