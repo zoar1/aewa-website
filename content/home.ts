@@ -232,5 +232,5 @@ export const cta = {
     subCopy:
         "Let's discuss how All Energy West Africa can deliver the right people for your next project.",
     primaryCta: { label: "Contact Us Today", href: "/contact-us" },
-    secondaryCta: { label: "Download Brochure", href: "/AEWA_Company_Profile.pdf" },
+    secondaryCta: { label: "Company Brochure", href: "/AEWA_Company_Profile.pdf" },
 };
