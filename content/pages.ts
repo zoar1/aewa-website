@@ -44,9 +44,9 @@ export const about = {
             "All Energy West Africa is the exclusive Nigerian agent for Davi Promau — the world's largest manufacturer of plate and angle rolls, made entirely in Italy. We support their commercial activities across the country.",
     },
     partner2: {
-        name: "RFL Resources Limited",
+        name: "RFTS Nig Ltd",
         description:
-            "All Energy West Africa partners with RFL Resources Limited, a Lagos-based workforce solutions and procurement company supporting energy, engineering, and industrial operations across the region. Together, we deliver pre-screened personnel and rapid, fully compliant workforce deployment for Oil & Gas and EPC projects.",
+            "AEWA is proud to be associated, through its shareholder, with RFTS Nig Ltd — the first indigenous Nigerian company to utilise Phased Array Technology for Non-Destructive Testing (NDT) services to the Oil & Gas industry. RFTS has a strong track record across major projects, including LPG storage facilities for NIPCO and NAVGAS, pressure vessels for Chevron/Dorman Long, and contractor NDT services at the Port Harcourt Refinery.",
     },
 };
 

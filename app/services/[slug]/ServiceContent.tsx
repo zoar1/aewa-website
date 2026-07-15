@@ -95,7 +95,7 @@ export default function ServiceContent({ slug, contentOverrides }: Props) {
 
                         {/* Download brochure */}
                         <a
-                            href="https://aewanl.com/AEWA_Company_Profile.pdf"
+                            href="/AEWA_Company_Profile.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-4 bg-white border border-[#E5E5E5] rounded-[24px] p-6 hover:border-[#111111] transition-colors duration-200 group"
