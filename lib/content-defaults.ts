@@ -94,7 +94,7 @@ export const DEFAULTS: Record<string, ContentMap> = {
     phone: site.phone,
     email: site.email,
     address: site.address,
-    hours: contact.details.find((d) => d.icon === "clock")?.value ?? "MONDAY - FRIDAY, 8:00AM - 5:00PM WAT",
+    hours: contact.details.find((d) => d.icon === "clock")?.value ?? "Monday - Friday, 8:00am - 5:00pm WAT",
     tagline: site.tagline,
     description: site.description,
     talent_pool_heading: "Don't See the Right Role For You?",

@@ -246,7 +246,7 @@ export const contact = {
         },
         {
             label: "Business Hours",
-            value: "MONDAY - FRIDAY, 8:00AM - 5:00PM WAT",
+            value: "Monday - Friday, 8:00am - 5:00pm WAT",
             href: null,
             icon: "clock",
         },
